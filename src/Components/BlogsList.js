@@ -8,7 +8,11 @@ class BlogsList extends React.Component {
   }
 
   renderList() {
-    return this.props.blogs.map((blog) => {
+    const { blogs } = this.props;
+    if (!blogs) {
+      return null;
+    }
+    return blogs.map((blog) => {
       return (
         <div className="item" key={blog.id}>
           <i className="large middle aligned icon user" />

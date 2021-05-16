@@ -15,13 +15,17 @@ class BlogsDetail extends React.Component {
     return (
       <div className="header" key={blog.id}>
         {blog.title}
+        <p> {blog.body} </p>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { blog: state.blogs.find((blog) => blog.id === ownProps.userId) };
+//   console.log(state);
+//   console.log(ownProps);
+
+  return { blog: state.blogs.find( blog => blog._id == ownProps.blogId) };
 };
 
 export default connect(mapStateToProps, { fetchOneBlog })(BlogsDetail);

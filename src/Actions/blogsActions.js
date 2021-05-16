@@ -4,8 +4,8 @@ import api from "../APIs/api";
 import * as ActionType from "./helpers/actionType";
 
 export const fetchBlogs = () => async (dispatch) => {
-  const blogs = await api.get("/blog");
-  dispatch({ type: ActionType.FETCH_BLOGS, payload: blogs.data });
+  const allBlogs = await api.get("/blog");
+  dispatch({ type: ActionType.FETCH_BLOGS, payload: allBlogs.data });
 };
 
 export const fetchUserBlogs = (id) => async (dispatch) => {
@@ -14,6 +14,6 @@ export const fetchUserBlogs = (id) => async (dispatch) => {
 };
 
 export const fetchOneBlog = (id) => async (dispatch) => {
-  const blogs = await api.get(`/blog/${id}`);
-  dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: blogs.data });
+  const oneBlog = await api.get(`/blog/${id}`);
+  dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: oneBlog.data });
 };
