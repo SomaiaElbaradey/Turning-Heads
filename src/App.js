@@ -6,6 +6,7 @@ import BlogDetail from './Components/blogs/BlogDetail';
 import UserBlogs from './Components/blogs/UserBlogs';
 import Register from './Components/user/Register';
 import Login from './Components/user/Login';
+import NewBlog from './Components/blogs/NewBlog';
 
 function App() {
   const id = "609e5cb2244d333e50a4ca29";
@@ -17,6 +18,7 @@ function App() {
       <UserBlogs userId={userId} /> */}
       {/* <Register /> */}
       <Login />
+      <NewBlog />
     </div>
   );
 }

@@ -16,6 +16,7 @@ export const auth = (userData) => async (dispatch) => {
 
     const response = await api.post("/user/login", userData);
       console.log(response.data);
+      localStorage.setItem("token", response.data);
       if (response.status == 200) {
         dispatch({
           type: actionType.SUCCESS_AUTH,

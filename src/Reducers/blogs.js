@@ -8,6 +8,9 @@ export default (state = [], action) => {
       return action.payload;
     case actionType.FETCH_USER_BLOGS:
       return action.payload;
+    case actionType.ADD_BLOG:
+      console.log("ff");
+      return action.payload;
     default:
       return state;
   }
