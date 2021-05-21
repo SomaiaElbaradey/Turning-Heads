@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchOneBlog } from "../Actions/blogsActions";
+import { fetchOneBlog } from "../../Actions/blogsActions";
 
 class BlogsDetail extends React.Component {
   componentDidMount() {
@@ -22,9 +22,6 @@ class BlogsDetail extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-//   console.log(state);
-//   console.log(ownProps);
-
   return { blog: state.blogs.find( blog => blog._id == ownProps.blogId) };
 };
 

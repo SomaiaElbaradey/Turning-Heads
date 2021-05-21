@@ -1,19 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
-import BlogsList from './Components/BlogsList';
-import BlogDetail from './Components/BlogDetail';
-import UserBlogs from './Components/UserBlogs';
+import BlogsList from './Components/blogs/BlogsList';
+import BlogDetail from './Components/blogs/BlogDetail';
+import UserBlogs from './Components/blogs/UserBlogs';
+import Register from './Components/user/Register';
+import Login from './Components/user/Login';
 
 function App() {
   const id = "609e5cb2244d333e50a4ca29";
-  const userId = "609bf15dad7bf640a861aef6";
+  const userId = "60a087ed9d2cfc42a409d493";
   return (
     <div className="App">
-      <BlogDetail blogId={id}/>
+      {/* <BlogDetail blogId={id}/>
       <BlogsList />
-      <UserBlogs userId={userId} />
-
+      <UserBlogs userId={userId} /> */}
+      {/* <Register /> */}
+      <Login />
     </div>
   );
 }

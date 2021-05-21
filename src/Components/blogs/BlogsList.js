@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchBlogs } from "../Actions/blogsActions";
+import { fetchBlogs } from "../../Actions/blogsActions";
 
 class BlogsList extends React.Component {
   componentDidMount() {
