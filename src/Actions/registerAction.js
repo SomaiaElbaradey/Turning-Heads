@@ -21,9 +21,9 @@ export const register = (userData) => async (dispatch) => {
         payload: response.data,
       });
     } else {
-      dispatch(authFail("Registeration failed"));
+      dispatch(authFail("failed"));
     }
   } catch (error) {
-    dispatch(authFail("Registeration failed"));
+    dispatch(authFail("failed"));
   }
 };
