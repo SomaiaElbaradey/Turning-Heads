@@ -1,4 +1,41 @@
 h1 {
-    color: black;
+  color: black;
 }
 
+.btn-1 {
+  position: relative;
+  padding: 7px 15px 7px 15px;
+  background: #fff;
+  color: #222;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-2 {
+  position: relative;
+  padding: 7px 15px 7px 15px;
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-2:hover {
+  transition: background-color 0.6s;
+  transition-timing-function: ease-in;
+  color: #222;
+  background-color: #fff;
+}
+
+.btn-1:hover {
+  transition: background-color 0.6s;
+  transition-timing-function: ease-in;
+  color: #fff;
+  background-color: #222;
+}
