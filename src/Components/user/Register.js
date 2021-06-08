@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../Actions/authActions";
+import { Link, Redirect } from "react-router-dom";
+import img from "../../fonts/01.png";
 
 const Register = (props) => {
   const [mail, setmail] = useState("");
@@ -15,117 +17,127 @@ const Register = (props) => {
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const registerUser = () => {
-
-
     console.log("props from register component", props);
     props.onAuth({ mail, firstName, lastName, username, password }, true);
   };
 
   return (
     <>
-      <div
-        style={{ overflow: "hidden", marginTop: "10rem", width: "20rem" }}
-        className="widget newslettre-form  mx-auto text-center register d-flex flex-nowrap"
-      >
-        <div id="RegForm" style={{ width: "100%" }}>
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="mail"
-                name="mail"
-                id="mail"
-                value={mail}
-                onInput={setInput(setmail)}
-              />
-              <span className="d-block text-danger">{errors?.mail}</span>
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-md-6 align-self-start text-center m-3">
+            <div id="RegForm" className="row form-content">
+              <div class="col-12">
+                <div class="step-title">
+                  <h2 class="featured">Join Turning Heads </h2>
+                  <p>
+                    Already have account om Turning Heads?{" "}
+                    <Link to="/login" className="Msg">
+                      Login
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div id="RegForm" className="row text-center form-content">
+              <div className="col-12 step-group">
+                <input
+                  type="text"
+                  placeholder="mail"
+                  name="mail"
+                  id="mail"
+                  value={mail}
+                  className="form-control field-name"
+                  onInput={setInput(setmail)}
+                />
+                <span className="d-block text-danger">{errors?.mail}</span>
+
+                <input
+                  type="text"
+                  placeholder="firstName"
+                  name="firstName"
+                  id="firstName"
+                  className="form-control field-name"
+                  value={firstName}
+                  onInput={setInput(setfirstName)}
+                />
+                <span className="d-block text-danger">{errors?.firstName}</span>
+
+                <input
+                  type="text"
+                  placeholder="lastName"
+                  name="lastName"
+                  className="form-control field-name"
+                  id="lastName"
+                  value={lastName}
+                  onInput={setInput(setlastName)}
+                />
+                <span className="d-block text-danger">{errors?.lastName}</span>
+
+                <input
+                  type="text"
+                  placeholder="username*"
+                  name="username"
+                  id="username"
+                  className="form-control field-name"
+                  value={username}
+                  onInput={setInput(setusername)}
+                />
+                <span className="d-block text-danger">{errors?.username}</span>
+
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  className="form-control field-password"
+                  id="password"
+                  value={password}
+                  onInput={setInput(setPassword)}
+                />
+                <span className="d-block text-danger">{errors?.password}</span>
+
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="password"
+                  id="confirm-password"
+                  className="form-control field-password"
+                  value={confirmPassword}
+                  onInput={setInput(setConfirmPassword)}
+                />
+                <span className="d-block text-danger">
+                  {errors?.confirmPassword}
+                </span>
+
+                <input
+                  type="submit"
+                  ref={regBtn}
+                  onClick={registerUser}
+                  className="field-submit form-control"
+                  value="Register"
+                />
+              </div>
+              {props.errMsg != null ? (
+                <div className="Error"> {props.errMsg} </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
 
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="firstName"
-                name="firstName"
-                id="firstName"
-                value={firstName}
-                onInput={setInput(setfirstName)}
-              />
-              <span className="d-block text-danger">{errors?.firstName}</span>
+          <div className="col-md-5 content-images pl-md-5 d-none d-md-block mt-5 text-center">
+            <div className="gallery register">
+              <div className="mask-radius"></div>
+              <img src={img} className="fit-image" alt="register Image" />
             </div>
           </div>
 
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="lastName"
-                name="lastName"
-                id="lastName"
-                value={lastName}
-                onInput={setInput(setlastName)}
-              />
-              <span className="d-block text-danger">{errors?.lastName}</span>
-            </div>
-          </div>
-
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="username"
-                name="username"
-                id="username"
-                value={username}
-                onInput={setInput(setusername)}
-              />
-              <span className="d-block text-danger">{errors?.username}</span>
-            </div>
-          </div>
-
-
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                value={password}
-                onInput={setInput(setPassword)}
-              />
-              <span className="d-block text-danger">{errors?.password}</span>
-            </div>
-          </div>
-
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="password"
-                id="confirm-password"
-                value={confirmPassword}
-                onInput={setInput(setConfirmPassword)}
-              />
-              <span className="d-block text-danger">
-                {errors?.confirmPassword}
-              </span>
-            </div>
-          </div>
-
-          <button ref={regBtn} onClick={registerUser} className="btn-custom">
-            Register
-          </button>
-          <hr />
         </div>
       </div>
     </>
   );
 };
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -141,7 +153,7 @@ const mapStateToProps = (state, props) => {
     errMsg,
     token,
     user,
-    isLoading
+    isLoading,
   };
 };
 
