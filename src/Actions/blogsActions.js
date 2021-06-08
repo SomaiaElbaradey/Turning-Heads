@@ -41,9 +41,6 @@ export const fetchOneBlog = (id) => async (dispatch) => {
 
 export const addBlog = (blog) => async (dispatch) => {
   try {
-    // dispatch({
-    //   type: ActionType.FETCH_BLOGS,
-    // });
     const response = await api.post("/blog", blog, { headers: authHeader() });
     console.log(response);
     if (response.status == 200) {

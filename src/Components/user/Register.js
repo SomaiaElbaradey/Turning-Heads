@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
-import { auth } from "../../Actions/authActions";
+import { register } from "../../Actions/registerAction";
 import { Link, Redirect } from "react-router-dom";
 import img from "../../fonts/01.png";
 
@@ -18,7 +18,8 @@ const Register = (props) => {
 
   const registerUser = () => {
     console.log("props from register component", props);
-    props.onAuth({ mail, firstName, lastName, username, password }, true);
+    props.register({ mail, firstName, lastName, username, password });
+    return <Redirect exact to={"/myBlogs"} />;
   };
 
   return (
@@ -139,22 +140,9 @@ const Register = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAuth: (userData, isSignup) => dispatch(auth(userData, isSignup)),
-  };
-};
-
 const mapStateToProps = (state, props) => {
-  console.log("state from comp", state);
-  const { errMsg, token, user, isLoading } = state.auth;
-
-  return {
-    errMsg,
-    token,
-    user,
-    isLoading,
-  };
+  // console.log("state from comp", state);
+  return { register: state };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, { register })(Register);

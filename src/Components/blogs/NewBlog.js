@@ -17,8 +17,6 @@ const NewBlog = (props) => {
     console.log("props from NewBlog component", props);
     console.log({ title, body, imgUrl, tags });
     props.addBlog({ title, body, imgUrl, tags });
-
-    // props.addBlog({ title, body, imgUrl, tags });
   };
 
   return (
@@ -42,35 +40,31 @@ const NewBlog = (props) => {
             </div>
           </div>
 
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="body"
-                name="body"
-                id="body"
-                value={body}
-                onInput={setInput(setbody)}
-              />
-              <span className="d-block text-danger">{errors?.body}</span>
-            </div>
+          <div className="form-group">
+            <textarea
+              placeholder="body"
+              name="body"
+              id="body"
+              value={body}
+              onInput={setInput(setbody)}
+            />
+            <span className="d-block text-danger">{errors?.body}</span>
           </div>
 
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="imgUrl"
-                name="imgUrl"
-                id="imgUrl"
-                value={imgUrl}
-                onInput={setInput(setimgUrl)}
-              />
-              <span className="d-block text-danger">{errors?.imgUrl}</span>
-            </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="imgUrl"
+              name="imgUrl"
+              id="imgUrl"
+              value={imgUrl}
+              onInput={setInput(setimgUrl)}
+            />
+            <span className="d-block text-danger">{errors?.imgUrl}</span>
           </div>
 
-          {/* <div className="form-flex mb-2">
+{/* 
+          <div className="form-flex mb-2">
             <div className="form-group">
               <input
                 type="text"
@@ -85,40 +79,16 @@ const NewBlog = (props) => {
           </div> */}
 
           <button ref={regBtn} onClick={NewBlogUser} className="btn-custom">
-            NewBlog
+            Create Blog
           </button>
-          <hr />
         </div>
       </div>
     </>
   );
 };
 
-
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onAuth: (userData) => dispatch(addBlog(userData)),
-//   };
-// };
-
-// const mapStateToProps = (state, props) => {
-//   console.log("state from newblog comp", state);
-// //   const { errMsg, token, user, isLoading } = state.auth;
-
-// //   return {
-// //     errMsg,
-// //     token,
-// //     user,
-// //     isLoading
-// //   };
-// };
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(NewBlog);
-
 const mapStateToProps = (state) => {
-    return { blogs: state.blogs };
-  };
-  
-  export default connect(mapStateToProps, { addBlog })(NewBlog);
+  return { blogs: state.blogs };
+};
+
+export default connect(mapStateToProps, { addBlog })(NewBlog);

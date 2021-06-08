@@ -1,6 +1,3 @@
-h1 {
-  color: black;
-}
 
 .btn-1 {
   position: relative;
@@ -38,4 +35,16 @@ h1 {
   transition-timing-function: ease-in;
   color: #fff;
   background-color: #222;
+}
+
+.blogTag{
+  color: #cb8b7f;
+}
+
+.blogTitle{
+  color: #1a191e;
+}
+
+.blogBody{
+  color: #a5a5a5;
 }

@@ -1,9 +1,9 @@
 import api from "../APIs/api";
 import * as actionType from "./helpers/actionType";
 
-export const authFail = (errMsg) => {
+export const Fail = (errMsg) => {
   return {
-    type: actionType.ERROR_AUTH,
+    type: actionType.FAILED_SIGNUP,
     payload: errMsg,
   };
 };
@@ -17,13 +17,13 @@ export const register = (userData) => async (dispatch) => {
     console.log(response);
     if (response.status == 200) {
       dispatch({
-        type: actionType.SUCCESS_AUTH,
-        payload: response.data,
+        type: actionType.SUCCESS_SIGNUP,
+        // payload: response.data,
       });
     } else {
-      dispatch(authFail("failed"));
+      dispatch(Fail("failed"));
     }
   } catch (error) {
-    dispatch(authFail("failed"));
+    dispatch(Fail("failed"));
   }
 };

@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import blogs from "./blogs";
 import { authReducer } from "./auth";
+import register from './register';
 
 export default combineReducers({
   blogs,
   auth: authReducer,
+  register
 });

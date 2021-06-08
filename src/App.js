@@ -12,21 +12,19 @@ import NewBlog from "./Components/blogs/NewBlog";
 import Footer from "./Components/Footer";
 
 function App() {
-  // const id = "609e5cb2244d333e50a4ca29";
-  // const userId = "60a087ed9d2cfc42a409d493";
   return (
     <>
       <BrowserRouter>
         <Header />
         <div className="mainDiv">
           <Switch>
-            {/* <Route path="/blogs/:id" component={Blog} />
+            {/* 
           <Route path="/home" component={Home} />
-          <Route path="/blogs" component={Blogs} />
-          <Route path="/blog/new" component={NewBlog} /> */}
+          */}
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Register} />
             <Route exact path="/myBlogs" component={UserBlogs} />
+            <Route exact path="/newBlog" component={NewBlog} />
             {/* 
           <Route path="/not-found" component={Page404} />
           <Redirect from="/" exact to="/home" />
@@ -40,10 +38,3 @@ function App() {
 }
 
 export default App;
-
-// {/* <BlogDetail blogId={id}/>
-// <BlogsList />
-// <UserBlogs userId={userId} /> */}
-// {/* <Register /> */}
-// {/* <Login /> */}
-// {/* <NewBlog /> */}

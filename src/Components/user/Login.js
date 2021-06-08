@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../Actions/authActions";
-import "./register.css";
+import "./css/register.css";
 import { Link, Redirect } from "react-router-dom";
 import img from "../../fonts/01.png";
 

@@ -7,3 +7,6 @@ export const LOADING_AUTH = "LOADING_AUTH";
 export const SUCCESS_AUTH = "SUCCESS_AUTH";
 export const ERROR_AUTH = "ERROR_AUTH";
 export const LOGOUT_AUTH = "LOGOUT_AUTH";
+
+export const SUCCESS_SIGNUP = "SUCCESS_SIGNUP";
+export const FAILED_SIGNUP = "FAILED_SIGNUP";
