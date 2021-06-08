@@ -7,7 +7,9 @@ import BlogDetail from "./Components/blogs/BlogDetail";
 import UserBlogs from "./Components/blogs/UserBlogs";
 import Register from "./Components/user/Register";
 import Login from "./Components/user/Login";
+import Header from "./Components/Header";
 import NewBlog from "./Components/blogs/NewBlog";
+import Footer from "./Components/Footer";
 
 function App() {
   // const id = "609e5cb2244d333e50a4ca29";
@@ -15,22 +17,24 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Switch>
-          {/* <Route path="/blogs/:id" component={Blog} />
-          <Route path="/category/:name" component={CategoryBlogs} />
+        <Header />
+        <div className="mainDiv">
+          <Switch>
+            {/* <Route path="/blogs/:id" component={Blog} />
           <Route path="/home" component={Home} />
           <Route path="/blogs" component={Blogs} />
           <Route path="/blog/new" component={NewBlog} /> */}
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Register}/>
-          <Route exact path="/userBlogs" component={UserBlogs} />
-          {/* <Route path="/signup" component={Signup} />
-          <Route path="/profile/:id" component={Profile} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Register} />
+            <Route exact path="/myBlogs" component={UserBlogs} />
+            {/* 
           <Route path="/not-found" component={Page404} />
           <Redirect from="/" exact to="/home" />
           <Redirect to="/not-found" /> */}
-        </Switch>
+          </Switch>
+        </div>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }

@@ -52,3 +52,8 @@
 .gallery img {
   width: 300px;
 }
+
+.Error {
+  color: #c2213e;
+  font-size: 21px;
+}

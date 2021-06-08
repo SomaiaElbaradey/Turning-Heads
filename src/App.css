@@ -7,3 +7,30 @@
   font-family: dms, monospace, sans-serif;
   font-weight: 100;
 }
+
+.footer {
+  background-color: #bb5a3a;
+  color: white;
+}
+
+.mainDiv{
+  margin-top: 9rem;
+
+}
+
+.navbar{
+  background-color: #fdf2f0;
+}
+
+.nav-link, .loginNav{
+  color: black!important;
+  text-decoration-style: none;
+}
+
+.navbar {
+  list-style: none;
+}
+
+.nav-link:hover, .loginNav:hover{
+  color: #bb5a3a!important;
+}

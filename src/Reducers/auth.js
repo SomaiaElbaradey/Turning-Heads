@@ -15,13 +15,15 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         isLoading: true,
         errMsg: null,
         token: null,
+        user: null,
         isAuthenticated: false,
       };
 
     case ActionTypes.SUCCESS_AUTH:
       return {
         ...state,
-        token: action.payload,
+        token: action.payload.webToken,
+        user: action.payload.user,
         isLoading: false,
         errMsg: null,
         isAuthenticated: true,
@@ -32,6 +34,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         ...state,
         token: null,
         isLoading: false,
+        user: null,
         errMsg: action.payload,
         isAuthenticated: false,
       };
@@ -42,6 +45,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         token: null,
         isLoading: false,
         errMsg: null,
+        user: null,
         isAuthenticated: false,
       };
     default: {

@@ -29,3 +29,9 @@ export const auth = (userData) => async (dispatch) => {
     dispatch(authFail("Login failed"));
   }
 };
+
+export const authLogout = () => {
+  return {
+    type: actionType.LOGOUT_AUTH,
+  };
+};

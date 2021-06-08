@@ -18,7 +18,7 @@ const Login = (props) => {
   };
 
   if (props.isAuthenticated === true) {
-    return <Redirect exact to={"/userBlogs"} />;
+    return <Redirect exact to={"/myBlogs"} />;
   }
 
   return (
