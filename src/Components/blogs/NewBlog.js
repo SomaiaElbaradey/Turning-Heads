@@ -6,7 +6,7 @@ const NewBlog = (props) => {
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
   const [imgUrl, setimgUrl] = useState("");
-  const [tags, settags] = useState([]);
+  const [tags, settags] = useState(["tag"]);
 
   const [errors, setErrors] = useState({});
 
@@ -63,32 +63,22 @@ const NewBlog = (props) => {
             <span className="d-block text-danger">{errors?.imgUrl}</span>
           </div>
 
-{/* 
-          <div className="form-flex mb-2">
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="tags"
-                name="tags"
-                id="tags"
-                value={tags}
-                onInput={setInput(settags)}
-              />
-              <span className="d-block text-danger">{errors?.tags}</span>
-            </div>
-          </div> */}
-
           <button ref={regBtn} onClick={NewBlogUser} className="btn-custom">
             Create Blog
           </button>
         </div>
+        {props.error != null ? (
+          <div className=""> {props.error} </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs };
+  return { blogs: state.blogs, error: state.blogs };
 };
 
 export default connect(mapStateToProps, { addBlog })(NewBlog);

@@ -10,20 +10,16 @@ export const Fail = (errMsg) => {
 
 export const register = (userData) => async (dispatch) => {
   try {
-    dispatch({
-      type: actionType.LOADING_AUTH,
-    });
     const response = await api.post("/user/register", userData);
-    console.log(response);
     if (response.status == 200) {
       dispatch({
         type: actionType.SUCCESS_SIGNUP,
-        // payload: response.data,
+        payload: response.data.message,
       });
     } else {
-      dispatch(Fail("failed"));
+      dispatch(Fail("failed to register"));
     }
   } catch (error) {
-    dispatch(Fail("failed"));
+    dispatch(Fail(error.response.data));
   }
 };

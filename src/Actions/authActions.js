@@ -26,7 +26,7 @@ export const auth = (userData) => async (dispatch) => {
           dispatch(authFail("Login failed"));
       }
   } catch (error) {
-    dispatch(authFail("Login failed"));
+    dispatch(authFail(error.response.data));
   }
 };
 

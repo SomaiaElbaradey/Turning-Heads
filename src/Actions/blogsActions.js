@@ -5,10 +5,10 @@ import * as ActionType from "./helpers/actionType";
 
 import authHeader from './helpers/authHeader';
 
-export const errorBlogs = () => {
+export const errorBlogs = (err) => {
   return {
     type: "ERROR_BLOG",
-    payload: "Unable to get blog",
+    payload: err,
   };
 };
 
@@ -17,7 +17,7 @@ export const fetchBlogs = () => async (dispatch) => {
     const allBlogs = await api.get("/blog");
     dispatch({ type: ActionType.FETCH_BLOGS, payload: allBlogs.data });
   } catch (error) {
-    dispatch(errorBlogs("Unable to load blogs"));
+    dispatch(errorBlogs(error.response.data));
   }
 };
 
@@ -26,7 +26,7 @@ export const fetchUserBlogs = (id) => async (dispatch) => {
     const blogs = await api.get(`/blog/${id}`);
     dispatch({ type: ActionType.FETCH_USER_BLOGS, payload: blogs.data });
   } catch (error) {
-    dispatch(errorBlogs("Unable to load blogs"));
+    dispatch(errorBlogs(error.response.data));
   }
 };
 
@@ -35,7 +35,7 @@ export const fetchOneBlog = (id) => async (dispatch) => {
     const oneBlog = await api.get(`/blog/${id}`);
     dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: oneBlog.data });
   } catch (error) {
-    dispatch(errorBlogs("Unable to load the blog"));
+    dispatch(errorBlogs(error.response.data));
   }
 };
 
@@ -51,7 +51,6 @@ export const addBlog = (blog) => async (dispatch) => {
     }
     dispatch(errorBlogs("Unable to add blog"));
   } catch (error) {
-    console.log(error );
-    dispatch(errorBlogs("Unable to add blog"));
+    dispatch(errorBlogs(error.response.data));
   }
 };

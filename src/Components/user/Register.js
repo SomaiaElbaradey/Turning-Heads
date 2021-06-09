@@ -17,7 +17,7 @@ const Register = (props) => {
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const registerUser = () => {
-    console.log("props from register component", props);
+    // console.log("props from register component", props);
     props.register({ mail, firstName, lastName, username, password });
     return <Redirect exact to={"/myBlogs"} />;
   };
@@ -119,8 +119,8 @@ const Register = (props) => {
                   value="Register"
                 />
               </div>
-              {props.errMsg != null ? (
-                <div className="Error"> {props.errMsg} </div>
+              {props.error != null ? (
+                <div className=""> {props.error} </div>
               ) : (
                 <div></div>
               )}
@@ -141,8 +141,7 @@ const Register = (props) => {
 };
 
 const mapStateToProps = (state, props) => {
-  // console.log("state from comp", state);
-  return { register: state };
+  return { register: state, error: state.register };
 };
 
 export default connect(mapStateToProps, { register })(Register);
