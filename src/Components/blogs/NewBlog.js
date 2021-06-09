@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { addBlog } from "../../Actions/blogsActions";
+import "./css/style.css";
 
 const NewBlog = (props) => {
   const [title, settitle] = useState("");
@@ -21,64 +22,70 @@ const NewBlog = (props) => {
 
   return (
     <>
-      <div
-        style={{ overflow: "hidden", marginTop: "10rem", width: "20rem" }}
-        className="widget newslettre-form  mx-auto text-center NewBlog d-flex flex-nowrap"
-      >
-        <div id="RegForm" style={{ width: "100%" }}>
-          <div className="form-flex mb-2">
+      <div>
+        <div className="container">
+          <h1 className="header">Create New Blog</h1>
+          <div className="row">
             <div className="form-group">
               <input
                 type="text"
                 placeholder="title"
                 name="title"
+                className="form-control field-name"
                 id="title"
                 value={title}
                 onInput={setInput(settitle)}
               />
               <span className="d-block text-danger">{errors?.title}</span>
             </div>
-          </div>
 
-          <div className="form-group">
-            <textarea
-              placeholder="body"
-              name="body"
-              id="body"
-              value={body}
-              onInput={setInput(setbody)}
-            />
-            <span className="d-block text-danger">{errors?.body}</span>
-          </div>
+            <div className="form-group">
+              <textarea
+                placeholder="body"
+                name="body"
+                id="body"
+                className="form-control"
+                value={body}
+                onInput={setInput(setbody)}
+              />
+              <span className="d-block text-danger">{errors?.body}</span>
+            </div>
 
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="imgUrl"
-              name="imgUrl"
-              id="imgUrl"
-              value={imgUrl}
-              onInput={setInput(setimgUrl)}
-            />
-            <span className="d-block text-danger">{errors?.imgUrl}</span>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="imgUrl"
+                name="imgUrl"
+                className="form-control"
+                id="imgUrl"
+                value={imgUrl}
+                onInput={setInput(setimgUrl)}
+              />
+              <span className="d-block text-danger">{errors?.imgUrl}</span>
+            </div>
+            <div classNam="text-center ml-5">
+              <button
+                className="form-control field-submit newBlog-btn"
+                ref={regBtn}
+                onClick={NewBlogUser}
+              >
+                Create Blog
+              </button>
+              {props.crudMsg != null || "" ? (
+                <div className="blogMsg"> {props.crudMsg} </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
           </div>
-
-          <button ref={regBtn} onClick={NewBlogUser} className="btn-custom">
-            Create Blog
-          </button>
         </div>
-        {props.error != null ? (
-          <div className=""> {props.error} </div>
-        ) : (
-          <div></div>
-        )}
       </div>
     </>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs, error: state.blogs };
+  return { crudMsg: state.crudMsg };
 };
 
 export default connect(mapStateToProps, { addBlog })(NewBlog);

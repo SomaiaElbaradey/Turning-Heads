@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../Actions/registerAction";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import img from "../../fonts/01.png";
 
 const Register = (props) => {
@@ -12,14 +12,16 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [confirmPassword, setConfirmPassword] = useState("");
+  const history = useHistory();
 
   let regBtn = useRef();
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const registerUser = () => {
-    // console.log("props from register component", props);
+    console.log(props);
     props.register({ mail, firstName, lastName, username, password });
-    return <Redirect exact to={"/myBlogs"} />;
+    // if (props.error === "user was registered successfully")
+    //   history.push("/login");
   };
 
   return (
@@ -133,7 +135,6 @@ const Register = (props) => {
               <img src={img} className="fit-image" alt="register Image" />
             </div>
           </div>
-
         </div>
       </div>
     </>

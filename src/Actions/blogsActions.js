@@ -7,7 +7,7 @@ import authHeader from './helpers/authHeader';
 
 export const errorBlogs = (err) => {
   return {
-    type: "ERROR_BLOG",
+    type: ActionType.ERROR_BLOG,
     payload: err,
   };
 };
@@ -48,9 +48,11 @@ export const addBlog = (blog) => async (dispatch) => {
         type: ActionType.ADD_BLOG,
         payload: response.data,
       });
+    } else {
+      dispatch(errorBlogs("Unable to add blog"));
     }
-    dispatch(errorBlogs("Unable to add blog"));
   } catch (error) {
+    console.log(error.response.data);
     dispatch(errorBlogs(error.response.data));
   }
 };

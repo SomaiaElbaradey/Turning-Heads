@@ -1,12 +1,10 @@
 import * as actionType from "../Actions/helpers/actionType";
 
-export default (state = []  , action) => {
+export default (state = "", action) => {
   switch (action.type) {
-    case actionType.FETCH_BLOGS:
+    case actionType.ADD_BLOG:
       return action.payload;
-    case actionType.FETCH_ONE_BLOG:
-      return action.payload;
-    case actionType.FETCH_USER_BLOGS:
+    case actionType.ERROR_BLOG:
       return action.payload;
     default:
       return state;

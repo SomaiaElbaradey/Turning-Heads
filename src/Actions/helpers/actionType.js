@@ -10,3 +10,6 @@ export const LOGOUT_AUTH = "LOGOUT_AUTH";
 
 export const SUCCESS_SIGNUP = "SUCCESS_SIGNUP";
 export const FAILED_SIGNUP = "FAILED_SIGNUP";
+
+export const ERROR_BLOG = "ERROR_BLOG";
+

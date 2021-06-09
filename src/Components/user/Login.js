@@ -2,10 +2,12 @@ import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../Actions/authActions";
 import "./css/register.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import img from "../../fonts/01.png";
 
 const Login = (props) => {
+  const history = useHistory();
+
   const [mail, setmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
@@ -18,7 +20,8 @@ const Login = (props) => {
   };
 
   if (props.isAuthenticated === true) {
-    return <Redirect exact to={"/myBlogs"} />;
+    history.push("/myBlogs");
+    window.location.reload();
   }
 
   return (

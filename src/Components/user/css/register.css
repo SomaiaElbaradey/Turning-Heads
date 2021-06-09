@@ -1,11 +1,15 @@
 .form-control {
-  font-size: 23px;
+  font-size: 21px;
   width: 85%;
   height: 50px;
   padding: 10px 15px;
   background: no-repeat;
   margin: 15px auto;
-  color: rgb(238, 234, 234);
+  /* color: rgb(238, 234, 234); */
+}
+
+textarea{
+  height: 300px!important;
 }
 
 .field-submit {

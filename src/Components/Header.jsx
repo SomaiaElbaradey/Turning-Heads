@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { authLogout } from "./../Actions/authActions";
 
 const Header = (props) => {
+  const history = useHistory();
   const handleLogout = () => {
     props.authLogout();
-    return <Redirect to="/login" />;
+    history.push("/login");
+    window.location.reload();
   };
 
   return (

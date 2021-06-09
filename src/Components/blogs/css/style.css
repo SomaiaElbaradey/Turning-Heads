@@ -1,42 +1,4 @@
 
-.btn-1 {
-  position: relative;
-  padding: 7px 15px 7px 15px;
-  background: #fff;
-  color: #222;
-  font-size: 12px;
-  line-height: 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.btn-2 {
-  position: relative;
-  padding: 7px 15px 7px 15px;
-  background: #222;
-  color: #fff;
-  font-size: 12px;
-  line-height: 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.btn-2:hover {
-  transition: background-color 0.6s;
-  transition-timing-function: ease-in;
-  color: #222;
-  background-color: #fff;
-}
-
-.btn-1:hover {
-  transition: background-color 0.6s;
-  transition-timing-function: ease-in;
-  color: #fff;
-  background-color: #222;
-}
-
 .blogTag{
   color: #cb8b7f;
 }
@@ -47,4 +9,22 @@
 
 .blogBody{
   color: #a5a5a5;
+}
+
+.newBlog-btn{
+  width: 150px!important;
+  font-size: 19px!important;
+}
+
+.blogMsg{
+  color: #814e45;
+  font-size: 17px;
+  width: 85%;
+  height: 50px;
+  padding: 10px 15px;
+  margin: 15px auto;
+}
+
+.header{
+  margin-left:6rem;
 }
