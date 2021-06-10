@@ -1,7 +1,6 @@
 export const FETCH_BLOGS = "FETCH_BLOGS";
 export const FETCH_USER_BLOGS = "FETCH_USER_BLOGS";
 export const FETCH_ONE_BLOG = "FETCH_ONE_BLOG";
-export const ADD_BLOG = "ADD_BLOG";
 
 export const LOADING_AUTH = "LOADING_AUTH";
 export const SUCCESS_AUTH = "SUCCESS_AUTH";
@@ -13,3 +12,8 @@ export const FAILED_SIGNUP = "FAILED_SIGNUP";
 
 export const ERROR_BLOG = "ERROR_BLOG";
 
+export const ADD_BLOG = "ADD_BLOG";
+export const DELETE_BLOG = "DELETE_BLOG";
+
+export const ERROR_COMMENT = "ERROR_COMMENT";
+export const ADD_COMMENT = "ADD_COMMENT";

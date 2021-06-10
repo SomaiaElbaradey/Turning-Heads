@@ -6,6 +6,8 @@ export default (state = "", action) => {
       return action.payload;
     case actionType.ERROR_BLOG:
       return action.payload;
+    case actionType.DELETE_BLOG:
+      return action.payload;
     default:
       return state;
   }

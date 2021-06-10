@@ -15,8 +15,6 @@ const NewBlog = (props) => {
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const NewBlogUser = () => {
-    console.log("props from NewBlog component", props);
-    console.log({ title, body, imgUrl, tags });
     props.addBlog({ title, body, imgUrl, tags });
   };
 

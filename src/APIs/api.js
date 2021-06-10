@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3919/api",
+  baseURL: "https://turning-heads.herokuapp.com/api",
 });
 // api.interceptors.request.use(
 //   (req) => {

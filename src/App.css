@@ -33,3 +33,63 @@
 .nav-link:hover, .loginNav:hover{
   color: #bb5a3a!important;
 }
+
+
+
+/*git in touch*/
+/*************************************************************************/
+
+.git .section-title h3{
+  font-size: 53px;
+  font-weight: 700;
+  padding-bottom: 10px;
+  color: #000000; 
+}
+
+.git .section-title span{
+  color:#521804c7;
+}
+
+.git .section-title p{
+  margin-bottom: 2em;
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+
+.git-form .form-group input, .git-form .form-group textarea{
+  width: 100%;
+  border: none;
+  border-radius:0;
+  border-bottom:2px solid #521804;
+  font-weight:296;
+  padding:15px;
+  margin-bottom: 1.5em;
+}
+
+.git-form .form-group input:active, .git-form .form-group textarea, .git-form .form-group input{
+  box-shadow: none;
+  font-weight:296;
+}
+
+.git-form .form-group input:focus, .git-form .form-group textarea:focus{
+  border-bottom:2px solid #f2ce5f;
+}
+
+.git-form button{
+  border: none;
+  box-shadow: none;
+  background-color:#521804;
+  color: #ffff;
+  text-align: center;
+  border-radius: 30px;
+  height: 45px;
+  width: 166px;
+  font-size: 16px;
+  margin-bottom: 1.5em;
+}
+
+.git-form button:hover{
+  background-color:#bb5a3a;
+  color: white;
+}
