@@ -19,13 +19,13 @@ const BlogsDetail = (props) => {
 
   const postComment = (id) => {
     props.addComment(id, { username: "username", body: comment });
-    toast(props.msg);
+    toast("The comment has been added");
   };
 
-  const deleteComment = (id, comment) => {
-    props.deleteComment(id, comment);
-    toast(props.msg);
-    props.fetchBlogComments(id);
+  const deleteComment = async function (id, comment) {
+    await props.deleteComment(id, comment);
+    await props.fetchBlogComments(id);
+    toast("the comment has been deleted");
   };
 
   const blog = props.blog[0];
@@ -113,8 +113,8 @@ const BlogsDetail = (props) => {
 const mapStateToProps = (state) => {
   return {
     blog: state.blogs,
-    msg: state.commentCRUD,
     comments: state.comments,
+    msg: state.commentCRUD,
   };
 };
 

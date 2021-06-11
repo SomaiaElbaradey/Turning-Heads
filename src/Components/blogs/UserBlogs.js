@@ -1,16 +1,26 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
+
 import { fetchUserBlogs, deleteBlog } from "../../Actions/blogsActions";
 import "./css/style.css";
-import { Link } from "react-router-dom";
 
 const UserBlogs = (props) => {
   useEffect(() => {
     props.fetchUserBlogs(props.id);
   }, []);
+  const history = useHistory();
 
-  const deleteArticle = (id) => {
-    props.deleteBlog(id);
+  const deleteArticle = async function (id) {
+    await props.deleteBlog(id);
+    toast("article deleted");
+  };
+
+  const editArticle = async function (id) {
+    history.push("/blog", id);
   };
 
   const { blogs } = props;
@@ -47,14 +57,13 @@ const UserBlogs = (props) => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-1">
-                    <p>Edit</p>
-                  </div>
-                  <div className="col-1">
+                  <div className="col-3">
+                    <button className="m-2" onClick={() => editArticle(blog._id)}>Edit</button>
                     <button onClick={() => deleteArticle(blog._id)}>
                       Delete
                     </button>
                   </div>
+                  <ToastContainer autoClose={2500} />
                 </div>
               </div>
             </div>
@@ -66,7 +75,7 @@ const UserBlogs = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs, id: state.auth.user };
+  return { blogs: state.blogs, id: state.auth.user, msg: state.crudMsg };
 };
 
 export default connect(mapStateToProps, { fetchUserBlogs, deleteBlog })(

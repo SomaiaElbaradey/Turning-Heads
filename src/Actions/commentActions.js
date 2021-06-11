@@ -51,6 +51,7 @@ export const deleteComment = (id, comment) => async (dispatch) => {
       dispatch(errorComments("Unable to delete comment"));
     }
   } catch (error) {
+    console.log(error);
     dispatch(errorComments(error.response.data));
   }
 };

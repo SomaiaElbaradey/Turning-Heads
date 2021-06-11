@@ -63,7 +63,6 @@ export const addBlog = (blog) => async (dispatch) => {
 export const deleteBlog = (id) => async (dispatch) => {
   try {
     const response = await api.delete(`/blog/${id}`, { headers: authHeader() });
-    console.log(response);
     if (response.status === 200) {
       dispatch({
         type: ActionType.DELETE_BLOG,
@@ -71,6 +70,24 @@ export const deleteBlog = (id) => async (dispatch) => {
       });
     } else {
       dispatch(errorBlogs("Unable to delete blog"));
+    }
+  } catch (error) {
+    console.log(error.response.data);
+    dispatch(errorBlogs(error.response.data));
+  }
+};
+
+//update one blog
+export const editBlog = (id, blog) => async (dispatch) => {
+  try {
+    const response = await api.patch(`/blog/${id}`, blog, { headers: authHeader() });
+    if (response.status === 200) {
+      dispatch({
+        type: ActionType.UPDATE_BLOG,
+        payload: response.data,
+      });
+    } else {
+      dispatch(errorBlogs("Unable to update blog"));
     }
   } catch (error) {
     console.log(error.response.data);

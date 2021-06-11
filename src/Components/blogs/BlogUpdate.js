@@ -1,26 +1,37 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { addBlog } from "../../Actions/blogsActions";
-import "./css/style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import { fetchOneBlog, editBlog  } from "../../Actions/blogsActions";
 
-const NewBlog = (props) => {
+const BlogUpdate = (props) => {
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
   const [imgUrl, setimgUrl] = useState("");
-  const [tags] = useState(["tag"]);
-
-  const [errors] = useState({});
+  const setInput = (setter) => (event) => setter(event.currentTarget.value);
+  const id = props.location.state;
 
   let regBtn = useRef();
-  const setInput = (setter) => (event) => setter(event.currentTarget.value);
+  const blog = props.blog[0];
 
-  const NewBlogUser = () => {
-    props.addBlog({ title, body, imgUrl, tags });
+  useEffect(() => {
+    props.fetchOneBlog(id);
+    settitle(blog.title);
+    setbody(blog.body);
+    setimgUrl(blog.imgUrl);
+  }, []);
+
+  const editArticle = () => {
+    props.editBlog(id, { title, body, imgUrl, tags: blog.tags });
+    toast("The blog has been updated successfully");
   };
 
+  if (!blog || blog === {}) {
+    return null;
+  }
   return (
-    <>
+    <div>
       <div>
         <div className="container">
           <h1 className="header">Create New Blog</h1>
@@ -35,7 +46,6 @@ const NewBlog = (props) => {
                 value={title}
                 onInput={setInput(settitle)}
               />
-              <span className="d-block text-danger">{errors?.title}</span>
             </div>
 
             <div className="form-group">
@@ -47,7 +57,6 @@ const NewBlog = (props) => {
                 value={body}
                 onInput={setInput(setbody)}
               />
-              <span className="d-block text-danger">{errors?.body}</span>
             </div>
 
             <div className="form-group">
@@ -60,15 +69,14 @@ const NewBlog = (props) => {
                 value={imgUrl}
                 onInput={setInput(setimgUrl)}
               />
-              <span className="d-block text-danger">{errors?.imgUrl}</span>
             </div>
             <div classNam="text-center ml-5">
               <button
                 className="form-control field-submit newBlog-btn"
                 ref={regBtn}
-                onClick={NewBlogUser}
+                onClick={editArticle}
               >
-                Create Blog
+                Edit Blog
               </button>
               {props.crudMsg != null || "" ? (
                 <div className="blogMsg"> {props.crudMsg} </div>
@@ -76,15 +84,22 @@ const NewBlog = (props) => {
                 <div></div>
               )}
             </div>
+            <ToastContainer autoClose={2500} />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  return { crudMsg: state.crudMsg };
+  return {
+    blog: state.blogs,
+    msg: state.crudMsg,
+  };
 };
 
-export default connect(mapStateToProps, { addBlog })(NewBlog);
+export default connect(mapStateToProps, {
+  fetchOneBlog,
+  editBlog
+})(BlogUpdate);

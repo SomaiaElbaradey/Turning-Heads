@@ -12,6 +12,7 @@ export const FETCH_ONE_BLOG = "FETCH_ONE_BLOG";
 export const ERROR_BLOG = "ERROR_BLOG";
 export const ADD_BLOG = "ADD_BLOG";
 export const DELETE_BLOG = "DELETE_BLOG";
+export const UPDATE_BLOG = "UPDATE_BLOG";
 
 export const ERROR_COMMENT = "ERROR_COMMENT";
 export const ADD_COMMENT = "ADD_COMMENT";

@@ -8,6 +8,8 @@ export const crudMsg = (state = "", action) => {
       return action.payload;
     case actionType.DELETE_BLOG:
       return action.payload;
+    case actionType.UPDATE_BLOG:
+      return action.payload;
     default:
       return state;
   }
