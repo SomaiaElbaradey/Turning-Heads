@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchBlogs } from "../../Actions/blogsActions";
-import { addComment } from "../../Actions/commentActions";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
+import { fetchBlogs } from "../../Actions/blogsActions";
+
 const BlogsList = (props) => {
-  const [comment, setComment] = useState("");
-  const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   useEffect(() => {
     props.fetchBlogs();
   }, []);
 
-  const postComment = (id) => {
-    props.addComment(id, { username: "username", body: comment });
-    toast(props.msg);
-  };
-
   const history = useHistory();
 
   const details = (id) => {
-    console.log(id);
     history.push("/blogdetails", id);
   };
 
@@ -49,7 +39,7 @@ const BlogsList = (props) => {
                 <div className="row">
                   <div className="description col-md-8">
                     <h2 className="blogTitle">{blog.title}</h2>
-                    <p className="blogBody">{blog.body}</p>
+                    <p className="blogBody">{(blog.body).slice(0,319)}</p>
                     <p>
                       {blog.tags.map((element) => {
                         return (
@@ -64,26 +54,6 @@ const BlogsList = (props) => {
                     <img src={blog.imgUrl} className="img-fluid" alt=""></img>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Comment"
-                      onInput={setInput(setComment)}
-                    />
-                  </div>
-                  <div className="col-6 git-form">
-                    <button
-                      type="submit"
-                      className="mt-3 shadow btn-colord btn-theme"
-                      onClick={() => postComment(blog._id)}
-                    >
-                      <span>Send</span>
-                    </button>
-                  </div>
-                  <ToastContainer autoClose={2500} />
-                </div>
               </div>
             </div>
           </>
@@ -94,7 +64,7 @@ const BlogsList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs, msg: state.commentCRUD };
+  return { blogs: state.blogs};
 };
 
-export default connect(mapStateToProps, { fetchBlogs, addComment })(BlogsList);
+export default connect(mapStateToProps, { fetchBlogs })(BlogsList);

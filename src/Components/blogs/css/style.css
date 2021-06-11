@@ -25,6 +25,15 @@
   margin: 15px auto;
 }
 
+.commenter{
+  color: #44221c;
+}
+
+.commentDiv{
+  margin: 0 auto;
+  width: 96%;
+}
+
 .header{
   margin-left:6rem;
 }

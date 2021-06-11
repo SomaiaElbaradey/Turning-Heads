@@ -29,13 +29,13 @@ const UserBlogs = (props) => {
       {blogs.map((blog) => {
         return (
           <>
-            <div key={blog.id}>
+            <div key={blog._id}>
               <i className="large middle aligned icon user" />
               <div className="card m-3 p-3">
                 <div className="row">
                   <div className="description col-md-8">
                     <h2 className="blogTitle">{blog.title}</h2>
-                    <p className="blogBody">{blog.body}</p>
+                    <p className="blogBody">{blog.body.slice(0, 319)}</p>
                     <p>
                       {blog.tags.map((element) => {
                         return <span className="blogTag">#{element} </span>;

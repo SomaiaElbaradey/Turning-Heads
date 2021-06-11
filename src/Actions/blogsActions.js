@@ -34,10 +34,8 @@ export const fetchUserBlogs = (id) => async (dispatch) => {
 //get one blog
 export const fetchOneBlog = (id) => async (dispatch) => {
   try {
-    console.log(id);
     const oneBlog = await api.get(`/blog/get/${id}`);
-    console.log(oneBlog);
-    dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: oneBlog.data });
+    dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: [oneBlog.data] });
   } catch (error) {
     dispatch(errorBlogs(error.response.data));
   }
