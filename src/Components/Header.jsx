@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
+import React from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { authLogout } from "./../Actions/authActions";
 
@@ -28,14 +28,6 @@ const Header = (props) => {
                   My Blogs
                 </NavLink>
               </li>
-              {/* <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/about"
-                >
-                  About
-                </NavLink>
-              </li> */}
 
               <li className="nav-item">
                 <NavLink className="nav-link" to="/contact">

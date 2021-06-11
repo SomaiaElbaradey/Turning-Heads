@@ -11,7 +11,7 @@ export const Fail = (errMsg) => {
 export const register = (userData) => async (dispatch) => {
   try {
     const response = await api.post("/user/register", userData);
-    if (response.status == 200) {
+    if (response.status === 200) {
       dispatch({
         type: actionType.SUCCESS_SIGNUP,
         payload: response.data.message,

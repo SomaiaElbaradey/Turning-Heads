@@ -1,6 +1,6 @@
-import * as actionType from "../Actions/helpers/actionType";
+import * as actionType from "../../Actions/helpers/actionType";
 
-export default (state = "", action) => {
+export const crudMsg = (state = "", action) => {
   switch (action.type) {
     case actionType.ADD_BLOG:
       return action.payload;

@@ -1,5 +1,4 @@
-import _ from "lodash";
-
+// import _ from "lodash";
 import api from "../APIs/api";
 import * as ActionType from "./helpers/actionType";
 
@@ -35,7 +34,9 @@ export const fetchUserBlogs = (id) => async (dispatch) => {
 //get one blog
 export const fetchOneBlog = (id) => async (dispatch) => {
   try {
-    const oneBlog = await api.get(`/blog/${id}`);
+    console.log(id);
+    const oneBlog = await api.get(`/blog/get/${id}`);
+    console.log(oneBlog);
     dispatch({ type: ActionType.FETCH_ONE_BLOG, payload: oneBlog.data });
   } catch (error) {
     dispatch(errorBlogs(error.response.data));
@@ -46,7 +47,7 @@ export const fetchOneBlog = (id) => async (dispatch) => {
 export const addBlog = (blog) => async (dispatch) => {
   try {
     const response = await api.post("/blog", blog, { headers: authHeader() });
-    if (response.status == 200) {
+    if (response.status === 200) {
       dispatch({
         type: ActionType.ADD_BLOG,
         payload: response.data,
@@ -65,7 +66,7 @@ export const deleteBlog = (id) => async (dispatch) => {
   try {
     const response = await api.delete(`/blog/${id}`, { headers: authHeader() });
     console.log(response);
-    if (response.status == 200) {
+    if (response.status === 200) {
       dispatch({
         type: ActionType.DELETE_BLOG,
         payload: response.data,

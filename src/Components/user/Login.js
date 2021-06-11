@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { auth } from "../../Actions/authActions";
 import "./css/register.css";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import img from "../../fonts/01.png";
 
 const Login = (props) => {
@@ -10,7 +10,7 @@ const Login = (props) => {
 
   const [mail, setmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState(null);
+  const [errors] = useState(null);
 
   let regBtn = useRef();
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
@@ -85,7 +85,7 @@ const Login = (props) => {
           <div className="col-md-5 content-images pl-md-5 d-none d-md-block mt-5 text-center">
             <div className="gallery register">
               <div className="mask-radius"></div>
-              <img src={img} className="fit-image" alt="register Image" />
+              <img src={img} className="fit-image" alt="" />
             </div>
           </div>
         </div>

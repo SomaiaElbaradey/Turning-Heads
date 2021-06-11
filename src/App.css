@@ -14,7 +14,8 @@
 }
 
 .mainDiv{
-  margin-top: 7rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .navbar{
@@ -34,6 +35,12 @@
   color: #bb5a3a!important;
 }
 
+.footer{
+  position : fixed;
+  bottom : 0;
+  width: 100%;
+  height:auto; margin-top:40px;
+}
 
 
 /*git in touch*/

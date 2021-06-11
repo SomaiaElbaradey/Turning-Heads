@@ -4,7 +4,7 @@ import { fetchOneBlog } from "../../Actions/blogsActions";
 
 class BlogsDetail extends React.Component {
   componentDidMount() {
-    this.props.fetchOneBlog(this.props.blogId);
+    this.props.fetchOneBlog(this.props.location.state);
   }
 
   render() {
@@ -13,7 +13,7 @@ class BlogsDetail extends React.Component {
       return null;
     }
     return (
-      <div className="header" key={blog.id}>
+      <div className="header" key={blog._id}>
         {blog.title}
         <p> {blog.body} </p>
       </div>
@@ -22,7 +22,7 @@ class BlogsDetail extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { blog: state.blogs.find( blog => blog._id == ownProps.blogId) };
+  return { blog: state.detailedBlog };
 };
 
 export default connect(mapStateToProps, { fetchOneBlog })(BlogsDetail);

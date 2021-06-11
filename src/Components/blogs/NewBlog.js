@@ -7,9 +7,9 @@ const NewBlog = (props) => {
   const [title, settitle] = useState("");
   const [body, setbody] = useState("");
   const [imgUrl, setimgUrl] = useState("");
-  const [tags, settags] = useState(["tag"]);
+  const [tags] = useState(["tag"]);
 
-  const [errors, setErrors] = useState({});
+  const [errors] = useState({});
 
   let regBtn = useRef();
   const setInput = (setter) => (event) => setter(event.currentTarget.value);

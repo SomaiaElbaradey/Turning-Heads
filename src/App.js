@@ -1,5 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
 
 import BlogsList from "./Components/blogs/BlogsList";
@@ -10,7 +12,8 @@ import Login from "./Components/user/Login";
 import Header from "./Components/Header";
 import NewBlog from "./Components/blogs/NewBlog";
 import Footer from "./Components/Footer";
-import Contact from './Components/Contact';
+import Contact from "./Components/Contact";
+import Error from "./Components/Error";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token") ? true : false;
@@ -20,31 +23,26 @@ function App() {
         <Header />
         <div className="mainDiv">
           <Switch>
+            <Route exact path="/home" component={BlogsList} />
+            <Route exact path="/blogDetails" component={BlogDetail} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/not-found" component={Error} />
+            <Redirect from="/" exact to="/home" />
             {isLoggedIn && (
-              <>
+              <Switch>
                 <Route exact path="/myBlogs" component={UserBlogs} />
-                <Route exact path="/" component={BlogsList} />
                 <Route exact path="/newBlog" component={NewBlog} />
-                <Route exact path="/contact" component={Contact} />
-                <Route exact path="/home" component={BlogsList} />
-              </>
+                <Redirect to="/not-found" />
+              </Switch>
             )}
             {!isLoggedIn && (
-              <>
-                <Route exact path="/home" component={BlogsList} />
-                <Route exact path="/contact" component={Contact} />
-                <Route exact path="/newBlog" component={Register} />
-                <Route exact path="/myBlogs" component={Register} />
+              <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Register} />
-                <Redirect exact to="/" component={BlogsList} />
-              </>
+                <Redirect to="/not-found" />
+              </Switch>
             )}
           </Switch>
-
-          {/* 
-          <Route path="/not-found" component={Page404} />
-          <Redirect to="/not-found" /> */}
         </div>
       </BrowserRouter>
       <Footer />

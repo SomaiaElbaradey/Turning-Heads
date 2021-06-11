@@ -1,4 +1,3 @@
-import _ from "lodash";
 
 import api from "../APIs/api";
 import * as ActionType from "./helpers/actionType";
@@ -13,16 +12,16 @@ export const errorComments = (err) => {
 };
 
 //post new comment
-export const addComment = (comment) => async (dispatch) => {
+export const addComment = (id, comment) => async (dispatch) => {
   try {
-    const response = await api.post("/blog/comment", comment, { headers: authHeader() });
-    if (response.status == 200) {
+    const response = await api.post(`/blog/comment/${id}`, comment, { headers: authHeader() });
+    if (response.status === 200) {
       dispatch({
         type: ActionType.ADD_COMMENT,
         payload: response.data,
       });
     } else {
-      dispatch(errorBlogs("Unable to add comment"));
+      dispatch(errorComments("Unable to add comment"));
     }
   } catch (error) {
     dispatch(errorComments(error.response.data));

@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../Actions/registerAction";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img from "../../fonts/01.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = (props) => {
   const [mail, setmail] = useState("");
@@ -10,18 +12,15 @@ const Register = (props) => {
   const [lastName, setlastName] = useState("");
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors] = useState({});
   const [confirmPassword, setConfirmPassword] = useState("");
-  const history = useHistory();
 
   let regBtn = useRef();
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const registerUser = () => {
-    console.log(props);
     props.register({ mail, firstName, lastName, username, password });
-    // if (props.error === "user was registered successfully")
-    //   history.push("/login");
+    toast(props.error);
   };
 
   return (
@@ -122,7 +121,8 @@ const Register = (props) => {
                 />
               </div>
               {props.error != null ? (
-                <div className=""> {props.error} </div>
+                <ToastContainer autoClose={2500} />
+                // <div className=""> {props.error} </div>
               ) : (
                 <div></div>
               )}
@@ -132,7 +132,7 @@ const Register = (props) => {
           <div className="col-md-5 content-images pl-md-5 d-none d-md-block mt-5 text-center">
             <div className="gallery register">
               <div className="mask-radius"></div>
-              <img src={img} className="fit-image" alt="register Image" />
+              <img src={img} className="fit-image" alt="register" />
             </div>
           </div>
         </div>

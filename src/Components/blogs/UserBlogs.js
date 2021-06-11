@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchUserBlogs, deleteBlog } from "../../Actions/blogsActions";
 import "./css/style.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UserBlogs = (props) => {
-
-  props.fetchUserBlogs(props.id);
+  useEffect(() => {
+    props.fetchUserBlogs(props.id);
+  }, []);
 
   const deleteArticle = (id) => {
-    console.log("clicked");
     props.deleteBlog(id);
   };
 
@@ -43,15 +43,17 @@ const UserBlogs = (props) => {
                     </p>
                   </div>
                   <div className="col-md-3 text-center">
-                    <img src={blog.imgUrl} className="img-fluid"></img>
+                    <img src={blog.imgUrl} className="img-fluid" alt=""></img>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-3">
-                    <a>Edit</a>
+                  <div className="col-1">
+                    <p>Edit</p>
                   </div>
-                  <div className="col-3">
-                    <a onClick={() => deleteArticle(blog._id)}>Delete</a>
+                  <div className="col-1">
+                    <button onClick={() => deleteArticle(blog._id)}>
+                      Delete
+                    </button>
                   </div>
                 </div>
               </div>
@@ -67,4 +69,6 @@ const mapStateToProps = (state) => {
   return { blogs: state.blogs, id: state.auth.user };
 };
 
-export default connect(mapStateToProps, {fetchUserBlogs, deleteBlog})(UserBlogs);
+export default connect(mapStateToProps, { fetchUserBlogs, deleteBlog })(
+  UserBlogs
+);

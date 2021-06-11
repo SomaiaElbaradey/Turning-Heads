@@ -28,3 +28,7 @@
 .header{
   margin-left:6rem;
 }
+
+.clickable-container{
+  cursor: pointer;
+}
