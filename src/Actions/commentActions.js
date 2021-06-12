@@ -51,7 +51,35 @@ export const deleteComment = (id, comment) => async (dispatch) => {
       dispatch(errorComments("Unable to delete comment"));
     }
   } catch (error) {
+    dispatch(errorComments(error.response.data));
+  }
+};
+
+//update one comment
+export const editComment = (id, comment, body) => async (dispatch) => {
+  try {
+    const response = await api.patch(`/blog/comment/${id}/${comment}`, body, { headers: authHeader() });
+    if (response.status === 200) {
+      dispatch({
+        type: ActionType.UPDATE_COMMENT,
+        payload: response.data,
+      });
+    } else {
+      dispatch(errorComments("Unable to update comment"));
+    }
+  } catch (error) {
     console.log(error);
+    dispatch(errorComments(error.response.data));
+  }
+};
+
+//get one comment
+export const fetchOneComment = (id, comment) => async (dispatch) => {
+  console.log("here");
+  try {
+    const oneComment = await api.get(`/blog/comment/${id}/${comment}`);
+    dispatch({ type: ActionType.FETCH_ONE_COMMENT, payload: [oneComment.data] });
+  } catch (error) {
     dispatch(errorComments(error.response.data));
   }
 };

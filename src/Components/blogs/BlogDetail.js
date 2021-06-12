@@ -5,10 +5,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { addComment, deleteComment } from "../../Actions/commentActions";
 import { fetchOneBlog } from "../../Actions/blogsActions";
-import { fetchBlogComments } from "../../Actions/commentActions";
+import {
+  fetchBlogComments,
+  editComment,
+  fetchOneComment,
+} from "../../Actions/commentActions";
 
 const BlogsDetail = (props) => {
   const [comment, setComment] = useState("");
+  const [commentId, setcommentId] = useState("");
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
   const id = props.location.state;
 
@@ -17,18 +22,35 @@ const BlogsDetail = (props) => {
     props.fetchBlogComments(id);
   }, []);
 
+  useEffect(() => {
+    if (props.oneComment[0] !== undefined) setComment(props.oneComment[0].body);
+  }, [props.oneComment]);
+
+  useEffect(() => {
+    if (props.msg) toast(props.msg);
+  }, [props.msg]);
+
   const postComment = (id) => {
     props.addComment(id, { username: "username", body: comment });
-    toast("The comment has been added");
   };
 
   const deleteComment = async function (id, comment) {
     await props.deleteComment(id, comment);
     await props.fetchBlogComments(id);
-    toast("the comment has been deleted");
+  };
+
+  const fetchComment = async function (Id) {
+    await setcommentId(Id);
+    await props.fetchOneComment(id, Id);
+  };
+
+  const updateComment = async function () {
+    props.editComment(id, commentId, { body: comment });
+    setComment("");
   };
 
   const blog = props.blog[0];
+
   if (!blog || blog === {}) {
     return null;
   }
@@ -58,23 +80,31 @@ const BlogsDetail = (props) => {
       </div>
       <div className="container">
         <div className="large middle aligned icon user">
-          <div className="card m-3 p-3">
+          <div className="m-3 p-3">
             <div className="row">
-              <div className="col-6">
+              <div className="col-md-9">
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Comment"
+                  placeholder="Post Comment"
+                  value={comment}
                   onInput={setInput(setComment)}
                 />
               </div>
-              <div className="col-6 git-form">
+              <div className="col-3 git-form">
                 <button
                   type="submit"
-                  className="mt-3 shadow btn-colord btn-theme"
-                  onClick={() => postComment(blog._id)}
+                  className="mt-3 shadow"
+                  onClick={() => postComment(blog._id, props.msg)}
                 >
                   <span>Send</span>
+                </button>
+                <button
+                  type="submit"
+                  className="shadow"
+                  onClick={updateComment}
+                >
+                  <span>Update</span>
                 </button>
               </div>
               <ToastContainer autoClose={2500} />
@@ -94,10 +124,10 @@ const BlogsDetail = (props) => {
                       {comment.body}{" "}
                     </p>
                     <div className="col-md-3">
-                      <a>Edit</a> |
                       <a onClick={() => deleteComment(blog._id, comment._id)}>
-                        | Delete
-                      </a>
+                        Delete
+                      </a>{" "}
+                      |<a onClick={() => fetchComment(comment._id)}>| Update</a>
                     </div>
                   </div>
                 );
@@ -115,6 +145,7 @@ const mapStateToProps = (state) => {
     blog: state.blogs,
     comments: state.comments,
     msg: state.commentCRUD,
+    oneComment: state.oneComment,
   };
 };
 
@@ -122,5 +153,7 @@ export default connect(mapStateToProps, {
   fetchOneBlog,
   addComment,
   fetchBlogComments,
+  fetchOneComment,
   deleteComment,
+  editComment,
 })(BlogsDetail);

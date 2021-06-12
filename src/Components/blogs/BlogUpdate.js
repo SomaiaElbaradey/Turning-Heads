@@ -22,9 +22,12 @@ const BlogUpdate = (props) => {
     setimgUrl(blog.imgUrl);
   }, []);
 
+  useEffect(() => {
+    if (props.msg) toast(props.msg);
+  }, [props.msg]);
+  
   const editArticle = () => {
     props.editBlog(id, { title, body, imgUrl, tags: blog.tags });
-    toast("The blog has been updated successfully");
   };
 
   if (!blog || blog === {}) {
@@ -34,7 +37,7 @@ const BlogUpdate = (props) => {
     <div>
       <div>
         <div className="container">
-          <h1 className="header">Create New Blog</h1>
+          <h1 className="header">Update Your Blog</h1>
           <div className="row">
             <div className="form-group">
               <input
