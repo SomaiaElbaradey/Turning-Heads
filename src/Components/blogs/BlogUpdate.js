@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { fetchOneBlog, editBlog  } from "../../Actions/blogsActions";
+import { fetchOneBlog, editBlog } from "../../Actions/blogsActions";
 
 const BlogUpdate = (props) => {
   const [title, settitle] = useState("");
@@ -23,9 +23,11 @@ const BlogUpdate = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.msg) toast(props.msg);
+    if (typeof props.msg === "object")
+      toast("Article was updated successfully");
+    if (props.msg !== "") toast(props.msg);
   }, [props.msg]);
-  
+
   const editArticle = () => {
     props.editBlog(id, { title, body, imgUrl, tags: blog.tags });
   };
@@ -104,5 +106,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   fetchOneBlog,
-  editBlog
+  editBlog,
 })(BlogUpdate);
