@@ -46,7 +46,7 @@ const Register = (props) => {
               <div className="col-12 step-group">
                 <input
                   type="text"
-                  placeholder="mail"
+                  placeholder="Email *"
                   name="mail"
                   id="mail"
                   value={mail}
@@ -57,7 +57,7 @@ const Register = (props) => {
 
                 <input
                   type="text"
-                  placeholder="firstName"
+                  placeholder="First Name *"
                   name="firstName"
                   id="firstName"
                   className="form-control field-name"
@@ -68,7 +68,7 @@ const Register = (props) => {
 
                 <input
                   type="text"
-                  placeholder="lastName"
+                  placeholder="Last Name *"
                   name="lastName"
                   className="form-control field-name"
                   id="lastName"
@@ -79,7 +79,7 @@ const Register = (props) => {
 
                 <input
                   type="text"
-                  placeholder="username*"
+                  placeholder="Username *"
                   name="username"
                   id="username"
                   className="form-control field-name"
@@ -90,7 +90,7 @@ const Register = (props) => {
 
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Password *"
                   name="password"
                   className="form-control field-password"
                   id="password"
