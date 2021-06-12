@@ -61,6 +61,17 @@ Before you start, make sure you have <a href="https://nodejs.org/en/download/">N
    
 ## Usage
 
+- Registration
+<img src="https://i.ibb.co/3B8LMMy/Screenshot-2021-06-12-041508.jpg" width="543" height="267" alt="ScreenShoot">
+
+- Blog Features
+<img src="https://i.ibb.co/SX51sVG/Screenshot-2021-06-11-151937.jpg" width="543" height="267" alt="ScreenShoot">
+<img src="https://i.ibb.co/cT4dTPj/Screenshot-2021-06-12-035959.jpg" width="543" height="267" alt="ScreenShoot">
+<img src="https://i.ibb.co/x5Q3VXP/Screenshot-2021-06-12-035907.jpg" width="543" height="267" alt="ScreenShoot">
+
+- Comment Features
+<img src="https://i.ibb.co/vvV8Pzs/Screenshot-2021-06-12-040050.jpg" width="543" height="267" alt="ScreenShoot">
+
 ## Deployment
 The API deployed at Heroku:<a href="https://turningheads.herokuapp.com/"> Turning Heads </a>
 
