@@ -73,7 +73,7 @@ Before you start, make sure you have <a href="https://nodejs.org/en/download/">N
 <img src="https://i.ibb.co/vvV8Pzs/Screenshot-2021-06-12-040050.jpg" width="543" height="267" alt="ScreenShoot">
 
 ## Deployment
-The API deployed at Heroku:<a href="https://turningheads.herokuapp.com/"> Turning Heads </a>
+The App deployed at Heroku:<a href="https://turningheads.herokuapp.com/"> Turning Heads </a>
 
 
 
