@@ -33,12 +33,13 @@ function App() {
               <Switch>
                 <Route exact path="/myBlogs" component={UserBlogs} />
                 <Route exact path="/newBlog" component={NewBlog} />
-                <Route exact path="/blog" component={BlogUpdate}/>
+                <Route exact path="/blog" component={BlogUpdate} />
                 <Redirect to="/not-found" />
               </Switch>
             )}
             {!isLoggedIn && (
               <Switch>
+                <Route exact path="/blogDetails" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Register} />
                 <Redirect to="/not-found" />

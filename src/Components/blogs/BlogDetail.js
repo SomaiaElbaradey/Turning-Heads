@@ -63,51 +63,18 @@ const BlogsDetail = (props) => {
         <div key={blog._id}>
           <i className="large middle aligned icon user" />
           <div className="card m-3 p-3">
-            <div className="description">
-              <h2 className="blogTitle">{blog.title}</h2>
-              <p className="blogBody">{blog.body}</p>
-            </div>
-            <div className="text-center">
-              <img src={blog.imgUrl} className="img-fluid" alt=""></img>
-            </div>
-            <p>
-              {blog.tags.map((element) => {
-                return <span className="blogTag">#{element} </span>;
-              })}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="large middle aligned icon user">
-          <div className="m-3 p-3">
             <div className="row">
-              <div className="col-md-9">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Post Comment"
-                  value={comment}
-                  onInput={setInput(setComment)}
-                />
+              <div className="description col-md-8 p-4">
+                <p className="blogBody">{blog.body}</p>
+                <p>
+                  {blog.tags.map((element) => {
+                    return <span className="blogTag">#{element} </span>;
+                  })}
+                </p>
               </div>
-              <div className="col-3 git-form">
-                <button
-                  type="submit"
-                  className="mt-3 shadow"
-                  onClick={() => postComment(blog._id, props.msg)}
-                >
-                  <span>Send</span>
-                </button>
-                <button
-                  type="submit"
-                  className="shadow"
-                  onClick={updateComment}
-                >
-                  <span>Update</span>
-                </button>
+              <div className="text-center col-md-4">
+                <img src={blog.imgUrl} className="img-fluid" alt=""></img>
               </div>
-              <ToastContainer autoClose={2500} />
             </div>
           </div>
         </div>
@@ -127,7 +94,7 @@ const BlogsDetail = (props) => {
                       <a onClick={() => deleteComment(blog._id, comment._id)}>
                         Delete
                       </a>{" "}
-                      |<a onClick={() => fetchComment(comment._id)}>| Update</a>
+                      |<a onClick={() => fetchComment(comment._id)}>| Edit</a>
                     </div>
                   </div>
                 );
@@ -136,6 +103,41 @@ const BlogsDetail = (props) => {
           </div>
         </div>
       </div>
+      <div className="container">
+        <div className="large middle aligned icon user">
+          <div className="m-3 p-3">
+            <div className="row">
+              <div className="col-md-8">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Post Comment"
+                  value={comment}
+                  onInput={setInput(setComment)}
+                />
+              </div>
+              <div className="col git-form">
+                <button
+                  type="submit"
+                  className="mt-3 shadow"
+                  onClick={() => postComment(blog._id, props.msg)}
+                >
+                  <span>Send</span>
+                </button>
+                <button
+                  type="submit"
+                  className="shadow"
+                  onClick={updateComment}
+                >
+                  <span>Edit</span>
+                </button>
+              </div>
+              <ToastContainer autoClose={2500} />
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

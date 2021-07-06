@@ -39,7 +39,8 @@
   position : fixed;
   bottom : 0;
   width: 100%;
-  height:auto; margin-top:40px;
+  height:auto; 
+  margin-top:40px;
 }
 
 
@@ -47,7 +48,7 @@
 /*************************************************************************/
 
 .git .section-title h3{
-  font-size: 53px;
+  font-size: 42px;
   font-weight: 700;
   padding-bottom: 10px;
   color: #000000; 

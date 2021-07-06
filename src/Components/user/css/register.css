@@ -9,7 +9,7 @@
 }
 
 textarea{
-  height: 300px!important;
+  height: 250px!important;
 }
 
 .field-submit {
@@ -60,4 +60,9 @@ textarea{
 .Error {
   color: #c2213e;
   font-size: 21px;
+}
+
+.git-form{
+  margin-left: 1.9rem;
+  margin-left: 1.9rem;
 }

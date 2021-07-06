@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import { blogs } from "./blog/blogs";
+import { myBlogs } from "./blog/myBlogs";
 import { authReducer } from "./auth";
 import { register } from "./register";
 import { crudMsg } from "./blog/blogsCRUD";
@@ -14,5 +15,6 @@ export default combineReducers({
   crudMsg,
   oneComment,
   comments,
-  commentCRUD
+  commentCRUD,
+  myBlogs
 });

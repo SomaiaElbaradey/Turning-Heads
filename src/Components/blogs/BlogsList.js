@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { fetchBlogs } from "../../Actions/blogsActions";
+import img from "../../img/02.png";
 
 const BlogsList = (props) => {
 
@@ -29,6 +30,7 @@ const BlogsList = (props) => {
       {blogs.map((blog) => {
         return (
           <>
+          
             <div
               key={blog._id}
               onClick={() => details(blog._id)}
@@ -37,8 +39,10 @@ const BlogsList = (props) => {
               <i className="large middle aligned icon user" />
               <div className="card m-3 p-3">
                 <div className="row">
+                  <div className="col-12 m-2" >
+                  </div>
                   <div className="description col-md-8">
-                    <h2 className="blogTitle">{blog.title}</h2>
+                    <h2 className="blogTitle"><img width="40" src={img} className="profile-img"/>: {blog.title}</h2>
                     <p className="blogBody">{(blog.body).slice(0,319)}</p>
                     <p>
                       {blog.tags.map((element) => {

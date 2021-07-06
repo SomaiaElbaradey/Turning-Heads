@@ -75,7 +75,7 @@ const UserBlogs = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs, id: state.auth.user, msg: state.crudMsg };
+  return { blogs: state.myBlogs, id: state.auth.user, msg: state.crudMsg };
 };
 
 export default connect(mapStateToProps, { fetchUserBlogs, deleteBlog })(
