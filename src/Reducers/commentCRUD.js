@@ -11,6 +11,6 @@ export const commentCRUD = (state = "", action) => {
     case actionType.ERROR_COMMENT:
       return action.payload;
     default:
-      return state;
+      return "";
   }
 };

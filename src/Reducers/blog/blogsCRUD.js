@@ -11,6 +11,6 @@ export const crudMsg = (state = "", action) => {
     case actionType.UPDATE_BLOG:
       return action.payload;
     default:
-      return state;
+      return "";
   }
 };

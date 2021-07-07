@@ -87,7 +87,7 @@ export const editBlog = (id, blog) => async (dispatch) => {
         payload: response.data,
       });
     } else {
-      dispatch(errorBlogs("Unable to update blog"));
+      dispatch(errorBlogs("Unable to edit blog"));
     }
   } catch (error) {
     console.log(error.response.data);

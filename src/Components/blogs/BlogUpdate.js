@@ -24,7 +24,7 @@ const BlogUpdate = (props) => {
 
   useEffect(() => {
     if (typeof props.msg === "object")
-      toast("Article was updated successfully");
+      toast("Article was edited successfully");
     if (props.msg !== "") toast(props.msg);
   }, [props.msg]);
 
@@ -39,7 +39,7 @@ const BlogUpdate = (props) => {
     <div>
       <div>
         <div className="container">
-          <h1 className="header">Update Your Blog</h1>
+          <h1 className="header">Edit Your Blog</h1>
           <div className="row">
             <div className="form-group">
               <input

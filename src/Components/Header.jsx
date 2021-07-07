@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { authLogout } from "./../Actions/authActions";
+import img from "../img/01.png";
 
 const Header = (props) => {
   const history = useHistory();
@@ -42,12 +43,22 @@ const Header = (props) => {
             </Link>
           )}
           {props.isAuth && (
-            <button
-              className=" big-screen  btn-custom mr-3"
-              onClick={handleLogout}
-            >
-              Sign out
-            </button>
+            <div className="row">
+              <div className="col-4">
+                <NavLink className="nav-link" to="/profile">
+                  <img width="30" alt="profile" src={img} className="profile-img"/>
+                </NavLink>
+              </div>
+
+              <div className="col mt-2">
+                <button
+                  className=" big-screen  btn-custom mr-3"
+                  onClick={handleLogout}
+                >
+                  Sign out
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </nav>

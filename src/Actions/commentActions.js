@@ -65,7 +65,7 @@ export const editComment = (id, comment, body) => async (dispatch) => {
         payload: response.data,
       });
     } else {
-      dispatch(errorComments("Unable to update comment"));
+      dispatch(errorComments("Unable to edit comment"));
     }
   } catch (error) {
     console.log(error);
