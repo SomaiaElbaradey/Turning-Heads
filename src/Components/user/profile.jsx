@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
@@ -10,37 +9,41 @@ import img from "../../img/02.png";
 
 const Profile = (props) => {
   const userId = props.location.state;
+
+  const [followed, setFollowed] = useState(props.isFollo);
+  const history = useHistory();
+
   useEffect(() => {
     props.fetchUserBlogs(userId);
     props.fetchUser(userId);
-    if (props.isFollowed(userId) == false) setFollowed(false);
   }, []);
-  const folo = props.isFollowed;
-  const [followed, setFollowed] = useState(folo);
-  const history = useHistory();
-  // useEffect(() => {
-  //   if (props.followMsg) toast(props.followMsg);
-  // }, [props.followMsg]);
+
+  useEffect(() => {
+    props.isFollowed(userId);
+    setFollowed(followed);
+  }, [followed]);
 
   const details = (id) => {
     history.push("/blogdetails", id);
   };
 
-  let newFollowing = async function () {
+  const newFollowing = async function () {
     await props.newFollow(userId);
     await setFollowed(true);
+    await props.fetchUser(userId);
   };
 
-  let newUnfollow = async function () {
+  const newUnfollow = async function () {
     await props.unFollow(userId);
     await setFollowed(false);
+    await props.fetchUser(userId);
   };
 
   const { blogs } = props;
   if (!blogs) {
     return <div>No Blogs Yet!</div>;
   }
-  console.log(followed);
+
   return (
     <div className="container p-3">
       <div class="container prof-img">
@@ -95,9 +98,6 @@ const Profile = (props) => {
                     <img src={blog.imgUrl} className="img-fluid" alt=""></img>
                   </div>
                 </div>
-                <div className="row">
-                  <ToastContainer autoClose={2500} />
-                </div>
               </div>
             </div>
           </>
@@ -108,13 +108,12 @@ const Profile = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     blogs: state.myBlogs,
     id: state.auth.user,
     msg: state.crudMsg,
     user: state.user,
-    isFollowed: state.isFollowed,
+    isFollo: state.isFollowed,
     followMsg: state.followMsg,
   };
 };

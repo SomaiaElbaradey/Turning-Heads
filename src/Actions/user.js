@@ -10,6 +10,7 @@ export const Fail = (errMsg) => {
   };
 };
 
+//return one specificc user
 export const fetchUser = (id) => async (dispatch) => {
   try {
     const response = await api.get(`/user/${id}`, { headers: authHeader() });
@@ -26,6 +27,7 @@ export const fetchUser = (id) => async (dispatch) => {
   }
 };
 
+//check if you follow the selcted user 
 export const isFollowed = (id) => async (dispatch) => {
   try {
     const response = await api.get(`/user/isFollowed/${id}`, {
@@ -44,6 +46,7 @@ export const isFollowed = (id) => async (dispatch) => {
   }
 };
 
+//follow new user
 export const newFollow = (id) => async (dispatch) => {
   try {
     const response = await api.post(
@@ -66,6 +69,7 @@ export const newFollow = (id) => async (dispatch) => {
   }
 };
 
+//unfollow followed user
 export const unFollow = (id) => async (dispatch) => {
   try {
     const response = await api.patch(
@@ -85,5 +89,58 @@ export const unFollow = (id) => async (dispatch) => {
     }
   } catch (error) {
     dispatch(Fail(error.response.data));
+  }
+};
+
+export const FailNames = (errMsg) => {
+  return {
+    type: actionType.FAILED_NAMES,
+    payload: errMsg,
+  };
+};
+
+
+//get following names
+export const following = (id) => async (dispatch) => {
+  try {
+    const response = await api.get(
+      `/user/following/${id}`,
+      {
+        headers: authHeader(),
+      }
+    );
+    if (response.status === 200) {
+      dispatch({
+        type: actionType.FOLLOWING,
+        payload: response.data,
+      });
+    } else {
+      dispatch(FailNames("failed to add load following"));
+    }
+  } catch (error) {
+    dispatch(FailNames(error.response.data));
+  }
+};
+
+
+//get followers names
+export const follower = (id) => async (dispatch) => {
+  try {
+    const response = await api.get(
+      `/user/follower/${id}`,
+      {
+        headers: authHeader(),
+      }
+    );
+    if (response.status === 200) {
+      dispatch({
+        type: actionType.FOLLOWER,
+        payload: response.data,
+      });
+    } else {
+      dispatch(FailNames("failed to add load followers"));
+    }
+  } catch (error) {
+    dispatch(FailNames(error.response.data));
   }
 };

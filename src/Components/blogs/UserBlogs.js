@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import { fetchUserBlogs, deleteBlog } from "../../Actions/blogsActions";
 import "./css/style.css";
+
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";

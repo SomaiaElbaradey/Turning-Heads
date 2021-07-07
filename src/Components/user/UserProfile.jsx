@@ -5,10 +5,37 @@ import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
 import { fetchUserBlogs, deleteBlog } from "../../Actions/blogsActions";
-import { fetchUser } from "../../Actions/user";
+import { fetchUser, follower, following } from "../../Actions/user";
 import img from "../../img/01.png";
+import img2 from "../../img/02.png";
+
+import Dialog from "@material-ui/core/Dialog";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const UserProfile = (props) => {
+  const [openFollower, setOpenFollower] = React.useState(false);
+  const [openFollowing, setOpenFollowing] = React.useState(false);
+
+  const handleClickOpenfollowers = () => {
+    props.follower(props.id);
+    setOpenFollower(true);
+  };
+
+  const handleClosefollowers = () => {
+    setOpenFollower(false);
+  };
+
+  const handleClickOpenFollowing = () => {
+    props.following(props.id);
+    setOpenFollowing(true);
+  };
+
+  const handleClosefollowing = () => {
+    setOpenFollowing(false);
+  };
+
   useEffect(() => {
     props.fetchUserBlogs(props.id);
     props.fetchUser(props.id);
@@ -25,20 +52,75 @@ const UserProfile = (props) => {
   }
   return (
     <div className="container p-3">
-      <div class="container prof-img">
+      <Dialog
+        open={openFollower}
+        onClose={handleClosefollowers}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Followers"}</DialogTitle>
+        <hr />
+
+        <DialogContent>
+          {props.followers.map((names) => {
+            return (
+              <>
+                <DialogContentText id="alert-dialog-description">
+                  {names.name}
+                </DialogContentText>
+              </>
+            );
+          })}
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={openFollowing}
+        onClose={handleClosefollowing}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Following:"}</DialogTitle>
+        <hr />
+
+        <DialogContent>
+          {props.followings.map((names) => {
+            return (
+              <>
+                <DialogContentText id="alert-dialog-description">
+                  <img src={img2} alt="img" width="41"></img>
+                  &ensp; {names.name}
+                </DialogContentText>
+              </>
+            );
+          })}
+        </DialogContent>
+      </Dialog>
+
+      <div className="container prof-img">
         <img alt="profile" src={img} width="119" />
-        <div class="row align-items-center">
-          <div class="col-md-12 user-name-prof">
+        <div className="row align-items-center">
+          <div className="col-md-12 user-name-prof">
             <h4>
               {props.user.firstName} {props.user.lastName}
             </h4>
           </div>
-          <div class="col-md-12 user-name-prof">
+          <div className="col-md-12 user-name-prof">
             <h4>
-              {props.user.followers ? props.user.followers.length: " "} {" "}
-              <span className="follo-user">followers</span> &emsp;{" "}
-              {props.user.following ? props.user.following.length: " "} {" "}
-              <span className="follo-user">following</span>
+              {props.user.followers ? props.user.followers.length : " "}{" "}
+              <span
+                className="follo-user clickable-container"
+                onClick={handleClickOpenfollowers}
+              >
+                followers
+              </span>{" "}
+              &emsp; {props.user.following ? props.user.following.length : " "}{" "}
+              <span
+                className="follo-user clickable-container"
+                onClick={handleClickOpenFollowing}
+              >
+                following
+              </span>
             </h4>
           </div>
         </div>
@@ -60,7 +142,11 @@ const UserProfile = (props) => {
                     <p className="blogBody">{blog.body.slice(0, 319)}</p>
                     <p>
                       {blog.tags.map((element) => {
-                        return <span className="blogTag">#{element} </span>;
+                        return (
+                          <span key={Math.random()} className="blogTag">
+                            #{element}{" "}
+                          </span>
+                        );
                       })}
                     </p>
                   </div>
@@ -81,12 +167,13 @@ const UserProfile = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     blogs: state.myBlogs,
     id: state.auth.user,
     msg: state.crudMsg,
     user: state.user,
+    followers: state.followers,
+    followings: state.following
   };
 };
 
@@ -94,4 +181,6 @@ export default connect(mapStateToProps, {
   fetchUserBlogs,
   deleteBlog,
   fetchUser,
+  following,
+  follower,
 })(UserProfile);
