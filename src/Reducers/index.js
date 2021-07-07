@@ -7,6 +7,7 @@ import { crudMsg } from "./blog/blogsCRUD";
 import { comments } from "./comments";
 import { commentCRUD } from "./commentCRUD";
 import { oneComment } from "./oneComment";
+import { user } from "./user";
 
 export default combineReducers({
   blogs,
@@ -16,5 +17,6 @@ export default combineReducers({
   oneComment,
   comments,
   commentCRUD,
-  myBlogs
+  myBlogs,
+  user
 });

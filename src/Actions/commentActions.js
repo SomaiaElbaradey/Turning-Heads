@@ -75,7 +75,6 @@ export const editComment = (id, comment, body) => async (dispatch) => {
 
 //get one comment
 export const fetchOneComment = (id, comment) => async (dispatch) => {
-  console.log("here");
   try {
     const oneComment = await api.get(`/blog/comment/${id}/${comment}`);
     dispatch({ type: ActionType.FETCH_ONE_COMMENT, payload: [oneComment.data] });

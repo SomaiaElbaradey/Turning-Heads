@@ -15,6 +15,7 @@ import Footer from "./Components/Footer";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import BlogUpdate from "./Components/blogs/BlogUpdate";
+import UserProfile from "./Components/user/UserProfile";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token") ? true : false;
@@ -34,12 +35,14 @@ function App() {
                 <Route exact path="/myBlogs" component={UserBlogs} />
                 <Route exact path="/newBlog" component={NewBlog} />
                 <Route exact path="/blog" component={BlogUpdate} />
+                <Route exact path="/profile" component={UserProfile} />
                 <Redirect to="/not-found" />
               </Switch>
             )}
             {!isLoggedIn && (
               <Switch>
                 <Route exact path="/blogDetails" component={Register} />
+                <Route exact path="/profile" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Register} />
                 <Redirect to="/not-found" />

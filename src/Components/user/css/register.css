@@ -8,8 +8,8 @@
   /* color: rgb(238, 234, 234); */
 }
 
-textarea{
-  height: 250px!important;
+textarea {
+  height: 250px !important;
 }
 
 .field-submit {
@@ -62,12 +62,27 @@ textarea{
   font-size: 21px;
 }
 
-.git-form{
+.git-form {
   margin-left: 1.9rem;
   margin-left: 1.9rem;
 }
 
-.delete-icon{
-  background-image: url('../../../img/svg/edit.svg');
+.delete-icon {
+  background-image: url("../../../img/svg/edit.svg");
   color: #521804;
+}
+
+.prof-img {
+  text-align: center;
+}
+
+.user-name-prof {
+  text-transform: capitalize;
+  color: #521804;
+}
+
+.user-name-prof .follo-user {
+  color: #310e0298;
+  font-size: 17px;
+  text-transform: lowercase;
 }
