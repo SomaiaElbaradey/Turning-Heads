@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 
@@ -27,7 +26,7 @@ const UserProfile = (props) => {
   return (
     <div className="container p-3">
       <div class="container prof-img">
-        <img src={img} width="119" />
+        <img alt="profile" src={img} width="119" />
         <div class="row align-items-center">
           <div class="col-md-12 user-name-prof">
             <h4>
@@ -36,9 +35,9 @@ const UserProfile = (props) => {
           </div>
           <div class="col-md-12 user-name-prof">
             <h4>
-              {props.user.followers.length}{" "}
+              {props.user.followers ? props.user.followers.length: " "} {" "}
               <span className="follo-user">followers</span> &emsp;{" "}
-              {props.user.following.length}{" "}
+              {props.user.following ? props.user.following.length: " "} {" "}
               <span className="follo-user">following</span>
             </h4>
           </div>
@@ -48,7 +47,11 @@ const UserProfile = (props) => {
       {blogs.map((blog) => {
         return (
           <>
-            <div className="clickable-container" key={blog._id} onClick={() => details(blog._id)}>
+            <div
+              className="clickable-container"
+              key={blog._id}
+              onClick={() => details(blog._id)}
+            >
               <i className="large middle aligned icon user" />
               <div className="card m-3 p-3">
                 <div className="row">

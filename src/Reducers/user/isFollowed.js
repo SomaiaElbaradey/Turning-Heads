@@ -1,10 +1,10 @@
-import * as actionType from "../Actions/helpers/actionType";
+import * as actionType from "../../Actions/helpers/actionType";
 
-export const user = (state = {}, action) => {
+export const isFollowed = (state = false, action) => {
   switch (action.type) {
     case actionType.FAILED_USER:
       return action.payload;
-    case actionType.FETCH_USER:
+    case actionType.IS_FOLLOWED:
       return action.payload;
     default:
       return state;

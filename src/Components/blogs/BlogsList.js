@@ -6,7 +6,6 @@ import { fetchBlogs } from "../../Actions/blogsActions";
 import img from "../../img/02.png";
 
 const BlogsList = (props) => {
-
   useEffect(() => {
     props.fetchBlogs();
   }, []);
@@ -15,6 +14,11 @@ const BlogsList = (props) => {
 
   const details = (id) => {
     history.push("/blogdetails", id);
+  };
+
+  const profile = (userId) => {
+    if (userId === props.id) history.push("/profile", userId);
+    else history.push("/userprofile", userId);
   };
 
   const { blogs } = props;
@@ -30,20 +34,28 @@ const BlogsList = (props) => {
       {blogs.map((blog) => {
         return (
           <>
-          
-            <div
-              key={blog._id}
-              onClick={() => details(blog._id)}
-              className="clickable-container"
-            >
+            <div key={blog._id}>
               <i className="large middle aligned icon user" />
               <div className="card m-3 p-3">
                 <div className="row">
-                  <div className="col-12 m-2" >
-                  </div>
+                  <div className="col-12 m-2"></div>
                   <div className="description col-md-8">
-                    <h2 className="blogTitle"><img width="40" src={img} className="profile-img"/>: {blog.title}</h2>
-                    <p className="blogBody">{(blog.body).slice(0,319)}</p>
+                    <h2 className="blogTitle">
+                      <img
+                        width="40"
+                        alt="img"
+                        src={img}
+                        className="profile-img clickable-container"
+                        onClick={() => profile(blog.userId)}
+                      />
+                      : {blog.title}
+                    </h2>
+                    <p
+                      className="blogBody clickable-container"
+                      onClick={() => details(blog._id)}
+                    >
+                      {blog.body.slice(0, 319)}{" "}
+                    </p>
                     <p>
                       {blog.tags.map((element) => {
                         return (
@@ -68,7 +80,7 @@ const BlogsList = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { blogs: state.blogs};
+  return { blogs: state.blogs, id:state.auth.user };
 };
 
 export default connect(mapStateToProps, { fetchBlogs })(BlogsList);

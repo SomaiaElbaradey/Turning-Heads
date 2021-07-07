@@ -20,7 +20,7 @@ const Login = (props) => {
   };
 
   if (props.isAuthenticated === true) {
-    history.push("/myBlogs");
+    history.push("/home");
     window.location.reload();
   }
 

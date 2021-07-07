@@ -23,3 +23,6 @@ export const UPDATE_COMMENT = "UPDATE_COMMENT";
 
 export const FAILED_USER = "FAILED_USER";
 export const FETCH_USER = "FETCH_USER";
+export const IS_FOLLOWED = "IS_FOLLOWED";
+export const NEW_FOLLOW = "NEW_FOLLOW";
+export const UNFOLLOW = "UNFOLLOW"

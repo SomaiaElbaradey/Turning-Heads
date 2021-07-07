@@ -26,7 +26,7 @@ const BlogsDetail = (props) => {
   const [commentId, setcommentId] = useState("");
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
   const id = props.location.state;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = (id) => {
     setcommentId(id);
@@ -51,7 +51,7 @@ const BlogsDetail = (props) => {
   }, [props.msg]);
 
   const postComment = async function (id) {
-    if (comment == "") {
+    if (comment === "") {
       toast("comment can't be empty.");
     } else {
       await props.addComment(id, { username: "username", body: comment });
@@ -172,7 +172,7 @@ const BlogsDetail = (props) => {
           </div>
         </div>
       ) : (
-        <h2></h2>
+        <div></div>
       )}
 
       <div className="container">
@@ -180,7 +180,7 @@ const BlogsDetail = (props) => {
           <div className="m-3 p-3">
             <div className="row">
               <div className="col-auto">
-                <img width="40" src={img} />
+                <img alt="comment" width="40" src={img} />
               </div>
               <div className="col-md-9">
                 <input

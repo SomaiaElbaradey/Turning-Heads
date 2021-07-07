@@ -16,6 +16,7 @@ import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import BlogUpdate from "./Components/blogs/BlogUpdate";
 import UserProfile from "./Components/user/UserProfile";
+import Profile from "./Components/user/Profile";
 
 function App() {
   const isLoggedIn = localStorage.getItem("token") ? true : false;
@@ -36,6 +37,7 @@ function App() {
                 <Route exact path="/newBlog" component={NewBlog} />
                 <Route exact path="/blog" component={BlogUpdate} />
                 <Route exact path="/profile" component={UserProfile} />
+                <Route exact path="/userprofile" component={Profile} />
                 <Redirect to="/not-found" />
               </Switch>
             )}

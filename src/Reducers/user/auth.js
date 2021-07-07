@@ -1,4 +1,4 @@
-import * as ActionTypes from "../Actions/helpers/actionType";
+import * as ActionTypes from "../../Actions/helpers/actionType";
 const INITIAL_STATE = {
   isLoading: false,
   errMsg: null,
