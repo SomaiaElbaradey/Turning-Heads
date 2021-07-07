@@ -58,19 +58,24 @@ const UserProfile = (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Followers"}</DialogTitle>
-        <hr />
+        <DialogTitle className="text-center bg-dark text-light">{"Followers"}</DialogTitle>
 
-        <DialogContent>
-          {props.followers.map((names) => {
-            return (
-              <>
-                <DialogContentText id="alert-dialog-description">
-                  {names.name}
-                </DialogContentText>
-              </>
-            );
-          })}
+        <DialogContent className="m-4">
+          {props.followers.length === 0 ? (
+            <h5>You have NO Followers yet.</h5>
+          ) : (
+            props.followers.map((names) => {
+              return (
+                <>
+                  <DialogContentText className="mb-1">
+                    <img src={img2} alt="img" width="41"></img>
+                    &ensp; {names.name}
+                  </DialogContentText>
+                  <hr/>
+                </>
+              );
+            })
+          )}
         </DialogContent>
       </Dialog>
 
@@ -80,20 +85,24 @@ const UserProfile = (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Following:"}</DialogTitle>
-        <hr />
+        <DialogTitle className="text-center bg-dark text-light">{"Following"}</DialogTitle>
 
-        <DialogContent>
-          {props.followings.map((names) => {
-            return (
-              <>
-                <DialogContentText id="alert-dialog-description">
-                  <img src={img2} alt="img" width="41"></img>
-                  &ensp; {names.name}
-                </DialogContentText>
-              </>
-            );
-          })}
+        <DialogContent className="m-4">
+          {props.followings.length === 0 ? (
+            <h1>You have NO followings yet.</h1>
+          ) : (
+            props.followings.map((names) => {
+              return (
+                <>
+                  <DialogContentText className="mb-1">
+                    <img src={img2} alt="img" width="41"></img>
+                    &ensp; {names.name}
+                  </DialogContentText>
+                  <hr/>
+                </>
+              );
+            })
+          )}
         </DialogContent>
       </Dialog>
 
@@ -173,7 +182,7 @@ const mapStateToProps = (state) => {
     msg: state.crudMsg,
     user: state.user,
     followers: state.followers,
-    followings: state.following
+    followings: state.following,
   };
 };
 
