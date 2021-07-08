@@ -43,8 +43,10 @@ function App() {
             )}
             {!isLoggedIn && (
               <Switch>
-                <Route exact path="/blogDetails" component={Register} />
-                <Route exact path="/profile" component={Register} />
+                <Route exact path="/myBlogs" component={Login} />
+                <Route exact path="/profile" component={Login} />
+                <Route exact path="/profile" component={Login} />
+                <Route exact path="/userprofile" component={Login} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Register} />
                 <Redirect to="/not-found" />
