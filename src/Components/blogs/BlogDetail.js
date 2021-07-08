@@ -11,8 +11,8 @@ import {
   fetchOneComment,
 } from "../../Actions/commentActions";
 import img from "../../img/01.png";
-import trash from "../../img/svg/trash.svg";
-import edit from "../../img/svg/edit.svg";
+import trash from "../../img/svg/trash.png";
+import edit from "../../img/svg/edit.png";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
