@@ -1,0 +1,113 @@
+.form-control {
+  font-size: 21px;
+  width: 85%;
+  height: 50px;
+  padding: 10px 15px;
+  background: no-repeat;
+  margin: 15px auto;
+  /* color: rgb(238, 234, 234); */
+}
+
+textarea {
+  height: 250px !important;
+}
+
+.field-submit {
+  color: white !important;
+  background-color: #bb5a3a !important;
+  height: auto;
+  opacity: 1;
+  transition: background-color 0.6s;
+  transition-timing-function: ease-in;
+  cursor: pointer;
+}
+
+.Msg {
+  color: #613c2f;
+}
+
+.field-submit:hover {
+  background-color: #521804 !important;
+}
+
+.step-title h2 {
+  font-size: 47px;
+  font-weight: 600;
+}
+
+.step-title p {
+  font-size: 15px;
+  color: #976859;
+}
+
+.field-name.ng-invalid.ng-touched,
+.field-email.ng-invalid.ng-touched,
+.field-age.ng-invalid.ng-touched,
+.field-password.ng-invalid.ng-touched {
+  border: #cf6679 solid 1px;
+}
+
+@media only screen and (max-width: 900px) {
+  .gallery img {
+    width: 250px;
+  }
+}
+
+.gallery img {
+  width: 300px;
+}
+
+.Error {
+  color: #c2213e;
+  font-size: 21px;
+}
+
+.git-form {
+  margin-left: 1.9rem;
+  margin-left: 1.9rem;
+}
+
+.delete-icon {
+  background-image: url("../../../img/svg/edit.png");
+  color: #521804;
+}
+
+.prof-img {
+  text-align: center;
+}
+
+.user-name-prof {
+  text-transform: capitalize;
+  color: #521804;
+}
+
+.user-name-prof .follo-user {
+  color: #310e0298;
+  font-size: 17px;
+  text-transform: lowercase;
+}
+
+.follow-button {
+  color: #3399ff;
+  font-family: "Helvetica";
+  font-size: 10pt;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #3399ff;
+  border-radius: 3px;
+  width: 85px;
+  height: 30px;
+  cursor: hand;
+}
+
+.following-button {
+  color: #fff;
+  font-family: "Helvetica";
+  font-size: 10pt;
+  background-color: #2eb82e;
+  border: 1px solid;
+  border-color: #2eb82e;
+  border-radius: 3px;
+  width: 85px;
+  height: 30px;
+}
