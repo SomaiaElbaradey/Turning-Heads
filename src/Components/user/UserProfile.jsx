@@ -89,7 +89,7 @@ const UserProfile = (props) => {
 
         <DialogContent className="m-4">
           {props.followings.length === 0 ? (
-            <h1>You have NO followings yet.</h1>
+            <h5>You have NO followings yet.</h5>
           ) : (
             props.followings.map((names) => {
               return (
