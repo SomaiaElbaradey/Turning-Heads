@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { auth } from "../../Actions/authActions";
 import "./css/register.css";
 import { Link, useHistory } from "react-router-dom";
-import img from "../../fonts/01.png";
+import img from "../../img/01.png";
 
 const Login = (props) => {
   const history = useHistory();

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../../Actions/registerAction";
 import { Link } from "react-router-dom";
-import img from "../../fonts/01.png";
+import img from "../../img/01.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
