@@ -29,10 +29,10 @@ const Login = (props) => {
       <div className="container">
         <div className="row mt-5">
           <div className="col-md-6 align-self-start text-center m-3">
-            <div class="row form-content">
-              <div class="col-12 mt-4">
-                <div class="step-title mt-4">
-                  <h2 class="featured">Sign in Turning Heads </h2>
+            <div className="row form-content">
+              <div className="col-12 mt-4">
+                <div className="step-title mt-4">
+                  <h2 className="featured">Sign in Turning Heads </h2>
                   <p>
                     New to Turning Heads?{" "}
                     <Link to="/signup" className="Msg">

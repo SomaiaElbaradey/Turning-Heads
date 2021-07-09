@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { register } from "../../Actions/registerAction";
 import { Link } from "react-router-dom";
 import img from "../../img/01.png";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { validate } from "./Validator";
 
 const Register = (props) => {
   const [mail, setmail] = useState("");
@@ -19,6 +21,18 @@ const Register = (props) => {
   const setInput = (setter) => (event) => setter(event.currentTarget.value);
 
   const registerUser = () => {
+    const errs = validate({
+      mail,
+      firstName,
+      lastName,
+      username,
+      password,
+      confirmPassword,
+    });
+    if (errs) {
+      toast(errs[Object.keys(errs)[0]]);
+      return;
+    }
     props.register({ mail, firstName, lastName, username, password });
     toast(props.error);
   };
@@ -29,9 +43,9 @@ const Register = (props) => {
         <div className="row mt-5">
           <div className="col-md-6 align-self-start text-center m-3">
             <div id="RegForm" className="row form-content">
-              <div class="col-12">
-                <div class="step-title">
-                  <h2 class="featured">Join Turning Heads </h2>
+              <div className="col-12">
+                <div className="step-title">
+                  <h2 className="featured">Join Turning Heads </h2>
                   <p>
                     Already have account om Turning Heads?{" "}
                     <Link to="/login" className="Msg">
@@ -122,7 +136,6 @@ const Register = (props) => {
               </div>
               {props.error != null ? (
                 <ToastContainer autoClose={2500} />
-                // <div className=""> {props.error} </div>
               ) : (
                 <div></div>
               )}
