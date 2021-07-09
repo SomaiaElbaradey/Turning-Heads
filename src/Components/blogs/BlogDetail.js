@@ -10,6 +10,8 @@ import {
   editComment,
   fetchOneComment,
 } from "../../Actions/commentActions";
+import { fetchUser } from "../../Actions/user";
+
 import img from "../../img/01.png";
 import trash from "../../img/svg/trash.png";
 import edit from "../../img/svg/edit.png";
@@ -147,22 +149,27 @@ const BlogsDetail = (props) => {
                         {comment.body}{" "}
                       </p>
                       <div className="col-md-3">
-                        <Button
-                          color="primary"
-                          className="delete-icon"
-                          onClick={() => handleClickOpen(comment._id)}
-                        >
-                          <img src={trash} alt="React Logo" width="20" />
-                          {/* <img src={img}/> */}
-                        </Button>
-                        <img
-                          onClick={() => fetchComment(comment._id)}
-                          src={edit}
-                          alt="React Logo"
-                          width="20"
-                        />
-
-                        {/* |<a >| Edit</a> */}
+                        {blog.userId === props.user ? (
+                          <Button
+                            color="primary"
+                            className="delete-icon"
+                            onClick={() => handleClickOpen(comment._id)}
+                          >
+                            <img src={trash} alt="React Logo" width="20" />
+                          </Button>
+                        ) : (
+                          <div></div>
+                        )}
+                        {comment._user === props.user ? (
+                          <img
+                            onClick={() => fetchComment(comment._id)}
+                            src={edit}
+                            alt="React Logo"
+                            width="20"
+                          />
+                        ) : (
+                          <div></div>
+                        )}
                       </div>
                     </div>
                   );
@@ -222,6 +229,7 @@ const mapStateToProps = (state) => {
     comments: state.comments,
     msg: state.commentCRUD,
     oneComment: state.oneComment,
+    user: state.auth.user,
   };
 };
 
@@ -230,6 +238,7 @@ export default connect(mapStateToProps, {
   addComment,
   fetchBlogComments,
   fetchOneComment,
+  fetchUser,
   deleteComment,
   editComment,
 })(BlogsDetail);
